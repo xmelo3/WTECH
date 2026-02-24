@@ -1,4 +1,5 @@
 # WTECH
+https://github.com/kurice/wtech26/tree/main
 
 ## TO DO:
 - choose topic ()
