@@ -1,9 +1,11 @@
 # WTECH
 
 ## TO DO:
+- choose topic ()
+- skica Homepage
 - think about scope
-- choose topic
 
 
 ## WHAT TO USE:
+- css (tailwind or wood...)
 - php: laravel
