@@ -1,8 +1,8 @@
 # WTECH
 
 ## For next week
-- skica Homepage
-- full html + css layout
+- skica Homepage vo figme
+- full html + css layout (optional)
   
 ## TO DO:
 - choose topic ()
