@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="index.html" class="logo">
+        <img src="../images/logo.svg" alt="WTECH Logo">
+    </a>
+
+    <div class="search">
+        <input type="text" placeholder="Search...">
+        <button><img src="../images/search.svg" alt="Search"></button>
+    </div>
+
+    <nav class="icons">
+        <a href="index.html" class="icon">
+            <img src="../images/home.svg" alt="Home"> 
+        </a>
+        <a href="cart.html" class="icon">
+            <img src="../images/cart.svg" alt="Cart"> 
+        </a>
+        <a href="profile.html" class="icon">
+            <img src="../images/profile.svg" alt="Profile"> 
+        </a>
+    </nav>
+</header>
+
+<!-- ===== MAIN NAVIGATION ===== -->
+<nav class="main-nav">
+    <button>Community</button>
+    <button>Status</button>
+    <button><a href=store.html>Store</a></button>
+</nav>
+
+<!-- ===== Main ===== -->
+<main class="store-container">
+  <aside class="filters">
+    <h3>Filters</h3>
+
+    <div class="filter-category">
+      <h4>Category</h4>
+      <label><input type="checkbox" name="cat" value="laptops"> Laptops</label><br>
+      <label><input type="checkbox" name="cat" value="phones"> Phones</label><br>
+      <label><input type="checkbox" name="cat" value="accessories"> Accessories</label>
+    </div>
+
+    <div class="filter-price">
+      <h4>Price</h4>
+      <label><input type="radio" name="price" value="low"> Low</label><br>
+      <label><input type="radio" name="price" value="medium"> Medium</label><br>
+      <label><input type="radio" name="price" value="high"> High</label>
+    </div>
+
+    <div class="advanced-filter">
+      <h4>Advanced</h4>
+      <label><input type="checkbox" name="brand" value="brand1"> Brand 1</label><br>
+      <label><input type="checkbox" name="brand" value="brand2"> Brand 2</label>
+    </div>
+  </aside>
+
+  <section class="products">
+    <h3>Products</h3>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <a href="detail.html">
+            <img src="images/product1.png" alt="Product 1">
+            <h4>Product 1</h4>
+            </a>
+            <p>$199.99</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/product2.png" alt="Product 2">
+            <h4>Product 2</h4>
+            <p>$299.99</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="images/product3.png" alt="Product 3">
+            <h4>Product 3</h4>
+            <p>$149.99</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="logo-footer">
+        <img src="../images/logo.svg" alt="Logo">
+    </div>
+
+    <section class="footer-links">
+        <div class="about">
+            <h4>About Us</h4>
+            <p>Info</p>
+        </div>
+        <div class="contact">
+            <h4>Contact</h4>
+            <p>Email: contact@gmail.com</p>
+            <p>Phone: +123456789</p>
+        </div>
+    </section>
+</footer>
+
+</body>
+</html> 
