@@ -1,102 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store</title>
+    <title>Profile</title>
+
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+
+<!-- ===== HEADER ===== -->
 <header>
-    <div class="logo">
-        <img src="images/logo.png" alt="Logo">
-    </div>
+    <a href="index.html" class="logo">
+        <img src="../images/logo.svg" alt="WTECH Logo">
+    </a>
 
     <div class="search">
         <input type="text" placeholder="Search...">
-        <button>🔍</button>
+        <button><img src="../images/search.svg" alt="Search"></button>
     </div>
 
     <nav class="icons">
-        <a href="index.html" class="icon">🏠</a> <!-- Home -->
-        <a href="#" class="icon">🛒</a> <!-- Cart -->
-        <a href="profile.html" class="icon">👤</a> <!-- Profile -->
+        <a href="index.html" class="icon">
+            <img src="../images/home.svg" alt="Home"> 
+        </a>
+        <a href="cart.html" class="icon">
+            <img src="../images/cart.svg" alt="Cart"> 
+        </a>
+        <a href="profile.html" class="icon">
+            <img src="../images/profile.svg" alt="Profile"> 
+        </a>
     </nav>
 </header>
 
-<!-- ===== MAIN NAVIGATION ===== -->
+
+<!-- ===== CATEGORY BAR ===== -->
 <nav class="main-nav">
-    <button>Community</button>
-    <button>Status</button>
-    <button>Store</button>
-    <!-- Add more buttons if needed -->
+    <button>Category</button>
+    <button>Category</button>
+    <button>Category</button>
+    <button>Category</button>
 </nav>
 
-<main class="profile-container">
 
-    <!-- ===== PROFILE INFO ===== -->
-    <section class="profile">
-        <div class="profile-img">
-            <img src="images/profile.png" alt="Profile image">
-        </div>
+<!-- ===== PROFILE ===== -->
+<section class="profile">
 
-        <div class="bio">
-            <h2>BIO</h2>
-            <p>This is a short bio about the user. Here you can add info, links, or anything relevant.</p>
-        </div>
-    </section>
+    <div class="avatar"></div>
 
-    <!-- ===== STATS + SEARCH ===== -->
-    <section class="profile-bar">
-        <div class="stats">
-            <p>Likes: 120 &nbsp; Followers: 450 &nbsp; Following: 180</p>
-        </div>
+    <div class="bio">
+        <h2>Bio</h2>
+        <p>This is user bio description.</p>
+    </div>
 
-        <div class="search">
-            <input type="text" placeholder="Search...">
-            <button>🔍</button>
-        </div>
-    </section>
+</section>
 
-    <!-- ===== USER'S PUBLISHED PRODUCTS ===== -->
-    <section class="products-published">
-        <h2>Published 3D Models</h2>
 
-        <div class="products-grid">
-            <!-- Example product card -->
-            <div class="product-card">
-                <img src="images/model1.png" alt="Model 1">
-                <h4>Model 1</h4>
-            </div>
+<!-- ===== STATS + SEARCH ===== -->
+<section class="profile-bar">
 
-            <div class="product-card">
-                <img src="images/model2.png" alt="Model 2">
-                <h4>Model 2</h4>
-            </div>
+    <div class="profile-stats">
+        Likes: 12 &nbsp; Followers: 1234 &nbsp; Following: 234
+    </div>
 
-            <!-- Add more product cards -->
-        </div>
-    </section>
+    <div class="profile-search">
+        <input type="text" placeholder="Search posts">
+    </div>
 
-</main>
+</section>
+
+
+<!-- ===== POSTS GRID ===== -->
+<section class="profile-posts">
+
+    <div class="post"></div>
+    <div class="post"></div>
+    <div class="post"></div>
+    <div class="post"></div>
+
+    <div class="post"></div>
+    <div class="post"></div>
+    <div class="post"></div>
+    <div class="post"></div>
+
+</section>
+
 
 <!-- ===== FOOTER ===== -->
 <footer>
     <div class="logo-footer">
-        <img src="images/logo.png" alt="Logo">
+        <img src="../images/logo.svg" alt="Logo">
     </div>
-    <div class="footer-links">
+
+    <section class="footer-links">
         <div class="about">
             <h4>About Us</h4>
-            <p>Some info about WTECH.</p>
+            <p>Info</p>
         </div>
         <div class="contact">
             <h4>Contact</h4>
-            <p>Email: contact@wtech.com</p>
+            <p>Email: contact@gmail.com</p>
             <p>Phone: +123456789</p>
         </div>
-    </div>
+    </section>
 </footer>
 
 </body>
-</html> 
+</html>

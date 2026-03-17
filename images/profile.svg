@@ -1,3 +1,40 @@
-<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M25 25C21.5625 25 18.6198 23.776 16.1719 21.3281C13.724 18.8802 12.5 15.9375 12.5 12.5C12.5 9.0625 13.724 6.11979 16.1719 3.67188C18.6198 1.22396 21.5625 0 25 0C28.4375 0 31.3802 1.22396 33.8281 3.67188C36.276 6.11979 37.5 9.0625 37.5 12.5C37.5 15.9375 36.276 18.8802 33.8281 21.3281C31.3802 23.776 28.4375 25 25 25ZM0 50V41.25C0 39.4792 0.456251 37.8521 1.36875 36.3687C2.28125 34.8854 3.49167 33.7521 5 32.9688C8.22917 31.3542 11.5104 30.1437 14.8437 29.3375C18.1771 28.5312 21.5625 28.1271 25 28.125C28.4375 28.1229 31.8229 28.5271 35.1562 29.3375C38.4896 30.1479 41.7708 31.3583 45 32.9688C46.5104 33.75 47.7219 34.8833 48.6344 36.3687C49.5469 37.8542 50.0021 39.4813 50 41.25V50H0Z" fill="black"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="50"
+   height="50"
+   viewBox="0 0 50 50"
+   fill="none"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="profile.svg"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="17.02"
+     inkscape:cx="25.029377"
+     inkscape:cy="25"
+     inkscape:window-width="1920"
+     inkscape:window-height="1111"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <path
+     d="M25 25C21.5625 25 18.6198 23.776 16.1719 21.3281C13.724 18.8802 12.5 15.9375 12.5 12.5C12.5 9.0625 13.724 6.11979 16.1719 3.67188C18.6198 1.22396 21.5625 0 25 0C28.4375 0 31.3802 1.22396 33.8281 3.67188C36.276 6.11979 37.5 9.0625 37.5 12.5C37.5 15.9375 36.276 18.8802 33.8281 21.3281C31.3802 23.776 28.4375 25 25 25ZM0 50V41.25C0 39.4792 0.456251 37.8521 1.36875 36.3687C2.28125 34.8854 3.49167 33.7521 5 32.9688C8.22917 31.3542 11.5104 30.1437 14.8437 29.3375C18.1771 28.5312 21.5625 28.1271 25 28.125C28.4375 28.1229 31.8229 28.5271 35.1562 29.3375C38.4896 30.1479 41.7708 31.3583 45 32.9688C46.5104 33.75 47.7219 34.8833 48.6344 36.3687C49.5469 37.8542 50.0021 39.4813 50 41.25V50H0Z"
+     fill="black"
+     id="path1"
+     style="fill:#3d2500;fill-opacity:1" />
 </svg>
