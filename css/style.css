@@ -1,0 +1,312 @@
+/* ===== Reset & basic box sizing ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== GLOBAL ===== */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px;
+}
+
+header .logo img {
+    height: 50px;
+}
+
+header .search {
+    flex: 1 1 100%;
+    margin: 10px 0;
+    display: flex;
+}
+
+header .search input {
+    flex: 1;
+    padding: 5px 10px;
+}
+
+header .search button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+}
+
+header .search button img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+header nav.icons {
+    display: flex;          /* puts them in a row */
+    align-items: center;
+    gap: 30px;              /* space between icons */
+}
+
+header nav.icons a {
+    display: flex;          /* helps center image inside */
+    align-items: center;
+    justify-content: center;
+}
+
+header nav.icons img {
+    width: 25px;            /* 👈 same size for all */
+    height: 25px;
+    object-fit: contain;    /* prevents distortion */
+}
+
+/* ===== MAIN NAVIGATION ===== */
+nav.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+nav.main-nav button {
+    flex: 1 1 40%;
+    padding: 10px 20px;
+}
+
+/* ===== HERO SECTION ===== */
+section.hero {
+    width: 100%;
+    height: auto;
+}
+
+section.hero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* ===== FEATURED SECTION ===== */
+section.featured {
+    padding: 20px;
+}
+
+section.featured h2 {
+    margin-bottom: 10px;
+}
+
+.scroll-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.scroll-container .item {
+    flex: 0 0 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+.see-more {
+    display: block;
+    margin: 10px auto 0;
+    padding: 5px 15px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    gap: 15px;
+}
+
+footer .logo-footer img {
+    height: 40px;
+}
+
+footer .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: small;
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+    header {
+        flex-wrap: nowrap;
+    }
+
+    header .search {
+        flex: 0.8;
+        margin: 0 20px;
+    }
+
+    nav.main-nav button {
+        flex: unset;
+    }
+
+    .scroll-container .item {
+        flex: 0 0 140px;
+        height: 140px;
+    }
+
+    footer {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    footer .footer-links {
+        flex-direction: row;
+    }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+    header {
+        padding: 15px 40px;
+    }
+
+    nav.main-nav {
+        gap: 20px;
+    }
+
+    .scroll-container .item {
+        flex: 0 0 150px;
+        height: 150px;
+    }
+
+    section.featured {
+        padding: 40px;
+    }
+
+    footer {
+        padding: 20px 40px;
+    }
+
+    /* ===== PROFILE SECTION ===== */
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 auto;
+}
+
+.bio {
+    background: #eee;
+    padding: 15px;
+    min-height: 120px;  
+    height: 69%;
+    width: 100%;
+}
+
+
+/* ===== PROFILE BAR ===== */
+
+.profile-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 20px 20px;
+}
+
+.profile-stats {
+    background: #eee;
+    padding: 10px;
+}
+
+.profile-search input {
+    width: 100%;
+    padding: 8px;
+}
+
+
+/* ===== POSTS GRID ===== */
+
+.profile-posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.post {
+    width: 100%;
+    padding-top: 100%;
+    background: #ddd;
+    border: 1px solid #bbb;
+}
+
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+
+    .profile {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .avatar {
+        background-image: url('../images/profile.svg');
+        margin: 0;
+    }
+
+    .profile-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .profile-posts {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+
+    .profile-posts {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .profile {
+        padding: 40px;
+    }
+
+    .profile-posts {
+        padding: 40px;
+    }
+}
+}
