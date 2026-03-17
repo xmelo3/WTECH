@@ -1,92 +1,147 @@
-/* ===== Reset & basic box sizing ===== */
-* {
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+    /* Spacing scale */
+    --space-xs:   5px;
+    --space-sm:   10px;
+    --space-md:   20px;
+    --space-lg:   40px;
+    --space-xl:   60px;
+
+    /* Component sizes */
+    --avatar-size:        150px;
+    --logo-height:        50px;
+    --logo-footer-height: 40px;
+    --icon-size:          25px;
+    --search-icon-size:   16px;
+    --card-size-sm:       120px;
+    --card-size-md:       140px;
+    --card-size-lg:       150px;
+
+    /* Colors */
+    --color-bg:        #ffffff;
+    --color-surface:   #eeeeee;
+    --color-surface-2: #dddddd;
+    --color-border:    #cccccc;
+    --color-border-2:  #bbbbbb;
+    --color-text:      #000000;
+
+    /* Layout */
+    --nav-gap:         10px;
+    --nav-gap-desktop: 20px;
+    --grid-gap:        15px;
+    --header-pad-x:    20px;
+    --header-pad-x-lg: 40px;
+    --section-pad:     20px;
+    --section-pad-lg:  40px;
+
+    /* Breakpoints (for reference — used in media queries below) */
+    /* --bp-tablet:  768px  */
+    /* --bp-desktop: 1024px */
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* ===== GLOBAL ===== */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.4;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 img {
     max-width: 100%;
     height: auto;
+    display: block;
 }
 
-/* ===== HEADER ===== */
+/* ============================================================
+   HEADER
+   ============================================================ */
 header {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
-    gap: 10px;
+    padding: var(--space-sm) var(--header-pad-x);
+    gap: var(--space-sm);
 }
 
 header .logo img {
-    height: 50px;
+    height: var(--logo-height);
 }
 
 header .search {
     flex: 1 1 100%;
-    margin: 10px 0;
+    margin: var(--space-sm) 0;
     display: flex;
 }
 
 header .search input {
     flex: 1;
-    padding: 5px 10px;
+    padding: var(--space-xs) var(--space-sm);
 }
 
 header .search button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 10px;
+    padding: var(--space-xs) var(--space-sm);
 }
 
 header .search button img {
-    width: 16px;
-    height: 16px;
+    width: var(--search-icon-size);
+    height: var(--search-icon-size);
     object-fit: contain;
 }
 
 header nav.icons {
-    display: flex;          /* puts them in a row */
+    display: flex;
     align-items: center;
-    gap: 30px;              /* space between icons */
+    gap: 30px;
 }
 
 header nav.icons a {
-    display: flex;          /* helps center image inside */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 header nav.icons img {
-    width: 25px;            /* 👈 same size for all */
-    height: 25px;
-    object-fit: contain;    /* prevents distortion */
+    width: var(--icon-size);
+    height: var(--icon-size);
+    object-fit: contain;
 }
 
-/* ===== MAIN NAVIGATION ===== */
+/* ============================================================
+   MAIN NAVIGATION
+   ============================================================ */
 nav.main-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
-    gap: 10px;
+    margin-bottom: var(--space-md);
+    gap: var(--nav-gap);
 }
 
 nav.main-nav button {
     flex: 1 1 40%;
-    padding: 10px 20px;
+    padding: var(--space-sm) var(--space-md);
 }
 
-/* ===== HERO SECTION ===== */
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
 section.hero {
     width: 100%;
     height: auto;
@@ -98,80 +153,177 @@ section.hero img {
     object-fit: cover;
 }
 
-/* ===== FEATURED SECTION ===== */
+/* ============================================================
+   FEATURED SECTION
+   ============================================================ */
 section.featured {
-    padding: 20px;
+    padding: var(--section-pad);
 }
 
 section.featured h2 {
-    margin-bottom: 10px;
+    margin-bottom: var(--space-sm);
 }
 
 .scroll-container {
     display: flex;
-    gap: 10px;
+    gap: var(--space-sm);
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: var(--space-sm);
 }
 
 .scroll-container .item {
-    flex: 0 0 120px;
-    height: 120px;
+    flex: 0 0 var(--card-size-sm);
+    height: var(--card-size-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-border);
 }
 
 .see-more {
     display: block;
-    margin: 10px auto 0;
-    padding: 5px 15px;
+    margin: var(--space-sm) auto 0;
+    padding: var(--space-xs) 15px;
 }
 
-/* ===== FOOTER ===== */
+/* ============================================================
+   PROFILE SECTION
+   ============================================================ */
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--section-pad);
+}
+
+.avatar {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.bio {
+    background: var(--color-surface);
+    padding: 15px;
+    min-height: 120px;
+    width: 100%;
+}
+
+/* ============================================================
+   PROFILE BAR
+   ============================================================ */
+.profile-bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: 0 var(--section-pad) var(--section-pad);
+}
+
+.profile-stats {
+    background: var(--color-surface);
+    padding: var(--space-sm);
+}
+
+.profile-search input {
+    width: 100%;
+    padding: 8px;
+}
+
+/* ============================================================
+   POSTS GRID
+   ============================================================ */
+.profile-posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--grid-gap);
+    padding: var(--section-pad);
+}
+
+.post {
+    width: 100%;
+    padding-top: 100%; /* 1:1 aspect ratio */
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-border-2);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     flex-wrap: wrap;
-    padding: 10px;
-    border-top: 1px solid #ccc;
+    padding: var(--space-sm);
+    border-top: 1px solid var(--color-border);
     gap: 15px;
 }
 
 footer .logo-footer img {
-    height: 40px;
+    height: var(--logo-footer-height);
 }
 
 footer .footer-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--space-sm);
     font-size: small;
 }
 
-/* ===== TABLET ===== */
+/* ============================================================
+   TABLET  —  min-width: 768px
+   ============================================================ */
 @media (min-width: 768px) {
+
+    /* Header */
     header {
         flex-wrap: nowrap;
     }
 
     header .search {
         flex: 0.8;
-        margin: 0 20px;
+        margin: 0 var(--space-md);
     }
 
+    /* Main nav */
     nav.main-nav button {
         flex: unset;
     }
 
+    /* Featured cards */
     .scroll-container .item {
-        flex: 0 0 140px;
-        height: 140px;
+        flex: 0 0 var(--card-size-md);
+        height: var(--card-size-md);
     }
 
+    /* Profile */
+    .profile {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .avatar {
+        background-image: url('../images/profile.svg');
+        margin: 0;
+    }
+
+    /* Profile bar */
+    .profile-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Posts grid */
+    .profile-posts {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Footer */
     footer {
         flex-direction: row;
         text-align: left;
@@ -183,130 +335,44 @@ footer .footer-links {
     }
 }
 
-/* ===== DESKTOP ===== */
+/* ============================================================
+   DESKTOP  —  min-width: 1024px
+   ============================================================ */
 @media (min-width: 1024px) {
+
+    /* Header */
     header {
-        padding: 15px 40px;
+        padding: 15px var(--header-pad-x-lg);
     }
 
+    /* Main nav */
     nav.main-nav {
-        gap: 20px;
+        gap: var(--nav-gap-desktop);
     }
 
+    /* Featured */
     .scroll-container .item {
-        flex: 0 0 150px;
-        height: 150px;
+        flex: 0 0 var(--card-size-lg);
+        height: var(--card-size-lg);
     }
 
     section.featured {
-        padding: 40px;
+        padding: var(--section-pad-lg);
     }
 
-    footer {
-        padding: 20px 40px;
-    }
-
-    /* ===== PROFILE SECTION ===== */
-
-.profile {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-}
-
-.avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: #ccc;
-    margin: 0 auto;
-}
-
-.bio {
-    background: #eee;
-    padding: 15px;
-    min-height: 120px;  
-    height: 69%;
-    width: 100%;
-}
-
-
-/* ===== PROFILE BAR ===== */
-
-.profile-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 0 20px 20px;
-}
-
-.profile-stats {
-    background: #eee;
-    padding: 10px;
-}
-
-.profile-search input {
-    width: 100%;
-    padding: 8px;
-}
-
-
-/* ===== POSTS GRID ===== */
-
-.profile-posts {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 20px;
-}
-
-.post {
-    width: 100%;
-    padding-top: 100%;
-    background: #ddd;
-    border: 1px solid #bbb;
-}
-
-
-/* ===== TABLET ===== */
-@media (min-width: 768px) {
-
+    /* Profile */
     .profile {
-        flex-direction: row;
-        align-items: center;
+        padding: var(--section-pad-lg);
     }
 
-    .avatar {
-        background-image: url('../images/profile.svg');
-        margin: 0;
-    }
-
-    .profile-bar {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .profile-posts {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-
-/* ===== DESKTOP ===== */
-@media (min-width: 1024px) {
-
+    /* Posts grid */
     .profile-posts {
         grid-template-columns: repeat(4, 1fr);
+        padding: var(--section-pad-lg);
     }
 
-    .profile {
-        padding: 40px;
+    /* Footer */
+    footer {
+        padding: var(--space-md) var(--section-pad-lg);
     }
-
-    .profile-posts {
-        padding: 40px;
-    }
-}
 }
