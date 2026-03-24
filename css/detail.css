@@ -88,7 +88,7 @@
 .download-box,
 .icon-actions {
     background: var(--color-surface);
-    border-radius: 14px;
+    border-radius: 9px;
     padding: var(--space-sm);
 }
 
@@ -167,7 +167,7 @@
 }
 
 .icon-actions img {
-    width: 20px;
+    height: 35px;
 }
 
 /* ============================================================
