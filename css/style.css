@@ -2,43 +2,35 @@
    CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-    /* Spacing scale */
-    --space-xs:   5px;
-    --space-sm:   10px;
-    --space-md:   20px;
-    --space-lg:   40px;
-    --space-xl:   60px;
+    --space-xs: 5px;
+    --space-sm: 2em;
+    --space-md: 2em;
+    --space-lg: 40px;
+    --space-xl: 60px;
 
-    /* Component sizes */
-    --avatar-size:        150px;
-    --logo-height:        50px;
+    --avatar-size: 150px;
+    --logo-height: 50px;
     --logo-footer-height: 40px;
-    --icon-size:          25px;
-    --search-icon-size:   16px;
-    --card-size-sm:       120px;
-    --card-size-md:       140px;
-    --card-size-lg:       150px;
+    --icon-size: 1.5em;
+    --search-icon-size: 16px;
+    --card-size-sm: 120px;
+    --card-size-md: 140px;
+    --card-size-lg: 150px;
 
-    /* Colors */
-    --color-bg:        #ffffff;
-    --color-surface:   #eeeeee;
+    --color-bg: #ffffff;
+    --color-surface: #eeeeee;
     --color-surface-2: #dddddd;
-    --color-border:    #cccccc;
-    --color-border-2:  #bbbbbb;
-    --color-text:      #000000;
+    --color-border: #acacac;
+    --color-border-2: #bbbbbb;
+    --color-text: #000000;
 
-    /* Layout */
-    --nav-gap:         10px;
+    --nav-gap: 2em;
     --nav-gap-desktop: 20px;
-    --grid-gap:        15px;
-    --header-pad-x:    20px;
+    --grid-gap: 15px;
+    --header-pad-x: 20px;
     --header-pad-x-lg: 40px;
-    --section-pad:     20px;
-    --section-pad-lg:  40px;
-
-    /* Breakpoints (for reference — used in media queries below) */
-    /* --bp-tablet:  768px  */
-    /* --bp-desktop: 1024px */
+    --section-pad: 20px;
+    --section-pad-lg: 40px;
 }
 
 /* ============================================================
@@ -57,12 +49,41 @@ body {
     line-height: 1.4;
     background-color: var(--color-bg);
     color: var(--color-text);
+
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+section {
+    margin-bottom: var(--space-lg);
+}
+
+/* ============================================================
+   GLOBAL ELEMENTS
+   ============================================================ */
+input {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
+
+button,
+.nav-btn {
+    cursor: pointer;
+    border: none;
+    padding: var(--space-xs) var(--space-md);
+    background: var(--color-surface-2);
+    transition: 0.2s;
+    border-radius: 8px
+}
+
+button:hover,
+.nav-btn:hover {
+    background: var(--color-border);
 }
 
 /* ============================================================
@@ -74,7 +95,6 @@ header {
     justify-content: space-between;
     padding: var(--space-sm) var(--header-pad-x);
     gap: var(--space-sm);
-    flex-wrap: nowrap;
 }
 
 header .logo img {
@@ -82,50 +102,35 @@ header .logo img {
 }
 
 header .search {
-    flex: 1 1 auto;
-    max-width: 300px;
+    flex: 1;
+    max-width: 600px;
     display: flex;
-    gap: var(--space-xs);
 }
 
 header .search input {
     flex: 1;
-    padding: var(--space-xs) var(--space-sm);
-    min-width: 80px;
 }
 
 header .search button {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-xs) var(--space-sm);
-    border: none;
     background: none;
-    cursor: pointer;
 }
 
-header .search button img {
+header .search img {
     width: var(--search-icon-size);
     height: var(--search-icon-size);
-    object-fit: contain;
 }
 
 header nav.icons {
     display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-header nav.icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: var(--space-md);
 }
 
 header nav.icons img {
     width: var(--icon-size);
     height: var(--icon-size);
-    object-fit: contain;
 }
 
 /* ============================================================
@@ -133,59 +138,54 @@ header nav.icons img {
    ============================================================ */
 nav.main-nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: var(--space-md);
     gap: var(--nav-gap);
+    margin-bottom: var(--space-md);
+    margin-left: 2em;
+
 }
 
-nav.main-nav button {
-    color: #ffd699;
-    background-color: rgb(61, 37, 0);
-    flex: 1 1 40%;
-    padding: var(--space-sm) var(--space-md);
-}
-
-nav.main-nav button a{
+.nav-btn {
     text-decoration: none;
     color: #ffd699;
+    background-color: rgb(61, 37, 0);
 }
 
 /* ============================================================
-   HERO SECTION
+   HERO
    ============================================================ */
 section.hero {
-    width: 100%;
-    height: auto;
+    max-height: 469px;
 }
 
 section.hero img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    width: calc(100% - 2em);
+    margin-left: 1em;
 }
 
 /* ============================================================
-   FEATURED SECTION
+   FEATURED
    ============================================================ */
 section.featured {
     padding: var(--section-pad);
 }
 
-section.featured h2 {
-    margin-bottom: var(--space-sm);
-}
-
 .scroll-container {
+    margin-top: 1em;
     display: flex;
     gap: var(--space-sm);
     overflow-x: auto;
-    padding-bottom: var(--space-sm);
+    scroll-behavior: smooth;   
+}
+
+.scroll-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .scroll-container .item {
-    flex: 0 0 var(--card-size-sm);
-    height: var(--card-size-sm);
+    flex: 0 0 calc(25% - 10px);
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -194,12 +194,14 @@ section.featured h2 {
 
 .see-more {
     display: block;
-    margin: var(--space-sm) auto 0;
-    padding: var(--space-xs) 15px;
+    margin: var(--space-sm) auto;
+    color: #ffd699;
+    background-color: rgb(61, 37, 0);
 }
 
+
 /* ============================================================
-   PROFILE SECTION
+   PROFILE
    ============================================================ */
 .profile {
     display: flex;
@@ -212,16 +214,14 @@ section.featured h2 {
     width: var(--avatar-size);
     height: var(--avatar-size);
     border-radius: 50%;
-    background-color: var(--color-surface);
+    background: var(--color-surface) url('../images/profile.svg') center/cover no-repeat;
     margin: 0 auto;
-    flex-shrink: 0;
 }
 
 .bio {
     background: var(--color-surface);
-    padding: 15px;
+    padding: var(--space-md);
     min-height: 120px;
-    width: 100%;
 }
 
 /* ============================================================
@@ -231,17 +231,12 @@ section.featured h2 {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    padding: 0 var(--section-pad) var(--section-pad);
+    padding: var(--section-pad);
 }
 
 .profile-stats {
     background: var(--color-surface);
     padding: var(--space-sm);
-}
-
-.profile-search input {
-    width: 100%;
-    padding: 8px;
 }
 
 /* ============================================================
@@ -255,8 +250,7 @@ section.featured h2 {
 }
 
 .post {
-    width: 100%;
-    padding-top: 100%; /* 1:1 aspect ratio */
+    padding-top: 100%;
     background: var(--color-surface-2);
     border: 1px solid var(--color-border-2);
 }
@@ -265,17 +259,14 @@ section.featured h2 {
    FOOTER
    ============================================================ */
 footer {
+    background-color: #412700;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
     padding: var(--space-sm);
-    border-top: 1px solid var(--color-border);
-    gap: 15px;
+    gap: var(--space-sm);
 }
 
-footer .logo-footer img {
+footer img {
     height: var(--logo-footer-height);
 }
 
@@ -284,22 +275,14 @@ footer .footer-links {
     flex-direction: column;
     gap: var(--space-sm);
     font-size: small;
+    color: #ffcb7d;
 }
 
 /* ============================================================
-   CART PAGE
+   CART
    ============================================================ */
 .cart-page {
     padding: var(--section-pad);
-}
-
-.back-button {
-    margin-bottom: var(--space-md);
-}
-
-.back-button button {
-    padding: 8px 12px;
-    cursor: pointer;
 }
 
 .cart-container {
@@ -311,107 +294,44 @@ footer .footer-links {
 .products-in-cart {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: var(--space-sm);
 }
 
 .product-cart {
     display: flex;
-    flex-direction: row;
-    gap: 15px;
+    gap: var(--space-sm);
     border: 1px solid var(--color-border);
     padding: var(--space-sm);
-    border-radius: 5px;
 }
 
 .product-cart img {
     width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
-
-.product-info h4 {
-    margin-bottom: var(--space-xs);
-}
-
-.product-info p {
-    margin-bottom: 3px;
 }
 
 .summary {
     border: 1px solid var(--color-border);
-    padding: 15px;
-    border-radius: 5px;
-    width: 100%;
-}
-
-.summary h2 {
-    margin-bottom: var(--space-sm);
-}
-
-.summary hr {
-    margin: var(--space-sm) 0;
-}
-
-.summary button {
-    padding: var(--space-sm) 15px;
-    margin-top: var(--space-sm);
-    cursor: pointer;
+    padding: var(--space-md);
 }
 
 /* ============================================================
-   STORE CONTAINER
+   STORE
    ============================================================ */
 .store-container {
     display: flex;
     gap: var(--space-md);
     padding: var(--section-pad);
-    background-color: #f9f9f9;
-    align-items: flex-start;
     flex-wrap: wrap;
 }
 
 .filters {
     flex: 0 0 200px;
-    background-color: var(--color-bg);
     padding: var(--space-md);
-    border-radius: 10px;
+    background: var(--color-bg);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    height: fit-content;
-}
-
-.filters h3 {
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-    color: #333;
-}
-
-.filters h4 {
-    margin: var(--space-sm) 0 var(--space-xs);
-    font-size: 1.1rem;
-}
-
-.categories {
-    padding-top: 5px;
-    padding-bottom: 10px;
-    line-height: 0.5;
-}
-
-.filters label {
-    display: block;
-    margin-bottom: var(--space-xs);
-    font-size: 0.95rem;
 }
 
 .products {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.products h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-    color: #333;
 }
 
 .product-grid {
@@ -421,239 +341,64 @@ footer .footer-links {
 }
 
 .product-card {
-    background-color: var(--color-bg);
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 15px;
+    padding: var(--space-md);
     text-align: center;
+    background: var(--color-bg);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: 0.2s;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.product-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: var(--space-sm);
-}
-
-.product-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-xs);
-    color: #222;
-}
-
-.product-card p {
-    font-weight: bold;
-    margin-bottom: var(--space-sm);
-    color: #555;
-}
-
-.product-card button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-.product-card button:hover {
-    background-color: #0056b3;
-}
-
-.avatar {
-    background-image: url('../images/profile.svg');
-    margin: 0;
 }
 
 /* ============================================================
-   LAYOUT HELPERS
+   FORM
    ============================================================ */
-main {
-    display: block;
-    padding: 0 var(--space-md);
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
 }
 
 /* ============================================================
-   MOBILE  —  max-width: 480px
+   RESPONSIVE
    ============================================================ */
-@media (max-width: 480px) {
-    header {
-        padding: var(--space-sm);
+@media (max-width: 450px) {
+    footer{
+        flex-direction: column;
     }
 
-    .avatar {
-        align-self: center;
-        background-image: url('../images/profile.svg');
-        margin: 0;
-    }
-
-    header .search {
-        max-width: 180px;
-    }
-
-    .scroll-container .item {
-        flex: 0 0 var(--card-size-sm);
-        height: var(--card-size-sm);
-        min-width: var(--card-size-sm);
+    .main-nav{
+        overflow-x: auto;
     }
 }
 
-/* ============================================================
-   TABLET  —  min-width: 768px
-   ============================================================ */
 @media (min-width: 768px) {
-
-    /* Header */
-    header {
-        padding: var(--space-sm) var(--header-pad-x);
-    }
-
-    header .search {
-        max-width: 400px;
-    }
-
-    /* Main nav */
-    nav.main-nav {
-        gap: var(--nav-gap);
-    }
-
-    nav.main-nav button {
-        flex: unset;
-    }
-
-    /* Featured cards */
-    .scroll-container .item {
-        flex: 0 0 var(--card-size-md);
-        height: var(--card-size-md);
-        min-width: var(--card-size-md);
-    }
-
-    /* Profile */
     .profile {
         flex-direction: row;
-        align-items: center;
     }
 
-    /* Profile bar */
     .profile-bar {
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
     }
 
-    /* Posts grid */
     .profile-posts {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    /* Footer */
-    footer {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-    }
-
-    footer .footer-links {
-        flex-direction: row;
-    }
-
-    /* Cart layout on tablet/desktop */
     .cart-container {
         flex-direction: row;
-        align-items: flex-start;
-        gap: var(--space-md);
-    }
-
-    .products-in-cart {
-        flex: 1;
     }
 
     .summary {
         flex: 0 0 300px;
     }
-
-    /* Store */
-    .store-container {
-        flex-direction: row;
-    }
 }
 
-/* ============================================================
-   LARGE TABLET / SMALL DESKTOP  —  max-width: 900px (store)
-   ============================================================ */
-@media (max-width: 900px) {
-    .store-container {
-        flex-direction: column;
-    }
-
-    .filters {
-        width: 100%;
-        margin-bottom: var(--space-md);
-    }
-
-    .products {
-        width: 100%;
-    }
-}
-
-/* ============================================================
-   DESKTOP  —  min-width: 1024px
-   ============================================================ */
 @media (min-width: 1024px) {
-
-    /* Header */
-    header {
-        background-color: #ffd699;
-        padding: 15px var(--header-pad-x-lg);
-    }
-
-    header .search {
-        max-width: 600px;
-    }
-
-    /* Main nav */
-    nav.main-nav {
-        gap: var(--nav-gap-desktop);
-    }
-
-    /* Featured */
-    .scroll-container .item {
-        flex: 0 0 var(--card-size-lg);
-        height: var(--card-size-lg);
-        min-width: var(--card-size-lg);
-    }
-
-    section.featured {
-        padding: var(--section-pad-lg);
-    }
-
-    /* Profile */
-    .profile {
-        padding: var(--section-pad-lg);
-    }
-
-    /* Posts grid */
     .profile-posts {
         grid-template-columns: repeat(4, 1fr);
-        padding: var(--section-pad-lg);
-    }
-
-    /* Footer */
-    footer {
-        padding: var(--space-md) var(--section-pad-lg);
-    }
-
-    /* Cart */
-    .product-cart img {
-        width: 120px;
-        height: 120px;
     }
 }
