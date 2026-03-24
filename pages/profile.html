@@ -5,73 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
     <a href="index.html" class="logo">
         <img src="../images/logo.svg" alt="Logo">
     </a>
-
     <div class="search">
         <input type="text" placeholder="Search...">
-        <button>
-            <img src="../images/search.svg" alt="Search">
-        </button>
+        <button><img src="../images/search.svg" alt="Search"></button>
     </div>
-
-    <nav class="icons">
-        <a href="index.html">
-            <img src="../images/home.svg" alt="Home">
-        </a>
-        <a href="cart.html">
-            <img src="../images/cart.svg" alt="Cart">
-        </a>
-        <a href="profile.html">
-            <img src="../images/profile.svg" alt="Profile">
-        </a>
-    </nav>
+    <div class="header-right">
+        <div class="login-register">
+            <a href="login.html" class="nav-btn">Login</a>
+            <a href="register.html" class="nav-btn">Register</a>
+        </div>
+        <nav class="icons">
+            <a href="index.html"><img src="../images/home.svg"></a>
+            <a href="cart.html"><img src="../images/cart.svg"></a>
+            <a href="profile.html"><img src="../images/profile.svg"></a>
+        </nav>
+    </div>
 </header>
 
+<!-- ===== NAV ===== -->
 <nav class="main-nav">
     <a href="#" class="nav-btn">Community</a>
     <a href="#" class="nav-btn">Status</a>
     <a href="store.html" class="nav-btn">Store</a>
 </nav>
 
-<main>
+<!-- ===== PROFILE ===== -->
+<main class="profile-page">
 
-<section class="profile">
-    <div class="avatar"></div>
-    <div class="bio">BIO</div>
-</section>
+    <!-- TOP: avatar + bio -->
+    <section class="profile-top">
+        <div class="avatar-wrap">
+            <img src="../images/st1.webp" alt="Avatar" class="avatar-img">
+        </div>
+        <div class="bio-wrap">
+            <p class="bio-label">BIO</p>
+            <p class="bio-text">Welcome to my profile! I collect and share 3D models — animals, vehicles, characters and more. Feel free to browse my posts and grab something you like.</p>
+        </div>
+    </section>
 
-<section class="profile-bar">
-    <div class="profile-stats">
-        Likes 12 | Followers 1234 | Following 234
-    </div>
+    <!-- STATS BAR + SEARCH -->
+    <section class="profile-bar">
+        <div class="profile-stats">
+            <span>Likes: <strong>12</strong></span>
+            <span>Followers: <strong>1234</strong></span>
+            <span>Following: <strong>234</strong></span>
+        </div>
+        <div class="posts-search">
+            <input type="text" placeholder="Search posts...">
+            <button class="filter-btn">
+                <img src="../images/search.svg" alt="Filter">
+            </button>
+        </div>
+    </section>
 
-    <div class="profile-search">
-        <input type="text" placeholder="Search">
-    </div>
-</section>
-
-<section class="profile-posts">
-    <div class="post"></div>
-    <div class="post"></div>
-    <div class="post"></div>
-    <div class="post"></div>
-    <div class="post"></div>
-    <div class="post"></div>
-</section>
+    <!-- POSTS GRID -->
+    <section class="profile-posts">
+        <a href="detail.html" class="post-item"><img src="../images/st2.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st3.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st4.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st5.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st6.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st7.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st8.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st9.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st10.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st11.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st12.webp" alt="Post"></a>
+        <a href="detail.html" class="post-item"><img src="../images/st13.webp" alt="Post"></a>
+    </section>
 
 </main>
 
+<!-- ===== FOOTER ===== -->
 <footer>
     <div class="logo-footer">
-        <img src="../images/logo.svg" alt="Logo">
+        <img src="../images/logo.svg">
     </div>
-
     <div class="footer-links">
         <div>
             <h4>About</h4>
