@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cart.css"> <!-- unified cart/checkout CSS -->
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="../images/logo.svg" alt="Logo">
+  </a>
+
+  <div class="search">
+    <input type="text" placeholder="Search...">
+    <button>
+      <img src="../images/search.svg" alt="Search">
+    </button>
+  </div>
+
+  <nav class="icons">
+    <a href="index.html">
+      <img src="../images/home.svg" alt="Home">
+    </a>
+    <a href="cart.html">
+      <img src="../images/cart.svg" alt="Cart">
+    </a>
+    <a href="profile.html">
+      <img src="../images/profile.svg" alt="Profile">
+    </a>
+  </nav>
+</header>
+
+<main class="cart-page">
+
+  <div class="back-button">
+    <button onclick="history.back()">← Back</button>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs">
+    <a href="cart.html">Cart</a>
+    <span>→</span>
+    <a href="checkout.html">Checkout</a>
+    <span>→</span>
+    <span class="current">Payment</span>
+  </div>
+
+
+  <div class="cart-container">
+
+    <div class="products-in-cart">
+
+      <!-- Payment method -->
+      <h3>Payment Method</h3>
+      <div class="payment-methods">
+        <button class="payment-option">
+          <img src="../images/gpayr.svg" alt="GPay">
+        </button>
+        <button class="payment-option">
+          <img src="../images/Visa.svg" alt="Visa">
+        </button>
+        <button class="payment-option">
+          <img src="../images/ApplePay.svg" alt="Apple Pay">
+        </button>
+      </div>
+
+      <!-- Card information -->
+      <h3>Card Information</h3>
+      <div class="form">
+        <!-- Row 1: Name + CCV -->
+        <div class="form-row">
+          <input type="text" placeholder="Name on Card">
+          <input type="text" placeholder="CCV" class="postal-code">
+        </div>
+
+        <!-- Row 2: Card number + Expiry -->
+        <div class="form-row">
+          <input type="text" placeholder="Card Number" class="address">
+          <input type="text" placeholder="Expiry Date" class="postal-code">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Summary -->
+    <div class="summary">
+      <h2>Summary</h2>
+      <ul class="summary-items">
+        <li>Product name × 1 → 50€</li>
+        <li>Another product × 2 → 70€</li>
+      </ul>
+      <hr>
+      <p class="total-price">Total price: 120€</p>
+      <button class="checkout-btn">Pay Now</button>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="logo-footer">
+    <img src="../images/logo.svg" alt="Logo">
+  </div>
+
+  <div class="footer-links">
+    <div>
+      <h4>About</h4>
+      <p>Info about project</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Email: contact@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
