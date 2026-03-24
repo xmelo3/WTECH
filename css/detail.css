@@ -1,0 +1,260 @@
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+
+.detail-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+    padding: var(--section-pad);
+}
+
+@media (min-width: 900px) {
+    .detail-container {
+        grid-template-columns: 2fr 1fr;
+        grid-template-areas:
+            "gallery sidebar"
+            "description description";
+    }
+
+    .product-gallery { grid-area: gallery; }
+    .product-sidebar { grid-area: sidebar; }
+    .product-description { grid-area: description; }
+}
+
+/* ============================================================
+   GALLERY (ROUNDED STYLE)
+   ============================================================ */
+
+.product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.main-image {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.main-image:hover img {
+    transform: scale(1.03);
+}
+
+/* Thumbnails */
+.thumbnail-row {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.thumbnail-row img {
+    flex: 1;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.thumbnail-row img:hover {
+    border-color: #412700;
+    transform: scale(1.05);
+}
+
+/* ============================================================
+   SIDEBAR (CARD STYLE)
+   ============================================================ */
+
+.product-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+/* Card blocks */
+.product-header,
+.author-box,
+.price-box,
+.download-box,
+.icon-actions {
+    background: var(--color-surface);
+    border-radius: 14px;
+    padding: var(--space-sm);
+}
+
+/* Title */
+.product-header h1 {
+    margin-bottom: 5px;
+}
+
+.rating {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Author */
+.author-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.follow-btn {
+    background: #412700;
+    color: #ffcb7d;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+.follow-btn:hover {
+    opacity: 0.85;
+}
+
+/* Price */
+.price-box {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #412700;
+}
+
+/* Download button */
+.download-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: #412700;
+    color: #ffcb7d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: bold;
+}
+
+.download-btn:hover {
+    opacity: 0.9;
+}
+
+.download-btn img {
+    width: 18px;
+}
+
+/* Icon actions */
+.icon-actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon-actions button {
+    background: transparent;
+    padding: 8px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.icon-actions button:hover {
+    background: var(--color-surface-2);
+}
+
+.icon-actions img {
+    width: 20px;
+}
+
+/* ============================================================
+   DESCRIPTION SECTION
+   ============================================================ */
+
+.product-description {
+    margin-top: var(--space-md);
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: var(--space-sm);
+    border-bottom: 2px solid var(--color-border);
+}
+
+.tab {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    color: #412700;
+}
+
+.tab.active {
+    border-bottom: 3px solid #412700;
+    font-weight: bold;
+}
+
+/* Content */
+.tab-content {
+    background: var(--color-surface);
+    padding: var(--space-md);
+    border-radius: 12px;
+    margin-top: var(--space-sm);
+    line-height: 1.6;
+}
+
+/* ============================================================
+   MOBILE TWEAKS
+   ============================================================ */
+
+/* Make thumbnail row horizontally scrollable and responsive */
+.thumbnail-row {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    flex-wrap: nowrap;        /* Prevent wrapping */
+    padding-bottom: 8px;      /* Space for scrollbar */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Thumbnails fixed size for scroll consistency */
+.thumbnail-row img {
+    flex: 0 0 70px;           /* Fixed width */
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.thumbnail-row img:hover {
+    border-color: #412700;
+    transform: scale(1.05);
+}
+
+/* Optional: hide scrollbar on WebKit browsers */
+.thumbnail-row::-webkit-scrollbar {
+    height: 6px;
+}
+
+.thumbnail-row::-webkit-scrollbar-thumb {
+    background-color: rgba(65, 39, 0, 0.5);
+    border-radius: 3px;
+}
+
+.thumbnail-row::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Responsive tweak for very small devices */
+@media (max-width: 400px) {
+    .thumbnail-row img {
+        flex: 0 0 60px;
+        height: 60px;
+    }
+}

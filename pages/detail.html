@@ -1,93 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/detail.css">
 
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src="imges/logo.png" alt="Logo">
-    </div>
+    <a href="index.html" class="logo">
+        <img src="../images/logo.svg" alt="Logo">
+    </a>
 
     <div class="search">
         <input type="text" placeholder="Search...">
-        <button>🔍</button>
+        <button>
+            <img src="../images/search.svg" alt="Search">
+        </button>
     </div>
 
     <nav class="icons">
-        <a href="index.html" class="icon">🏠</a>
-        <a href="#" class="icon">🛒</a>
-        <a href="profile.html" class="icon">👤</a> <!-- Profile -->
+        <a href="index.html">
+            <img src="../images/home.svg" alt="Home">
+        </a>
+        <a href="cart.html">
+            <img src="../images/cart.svg" alt="Cart">
+        </a>
+        <a href="profile.html">
+            <img src="../images/profile.svg" alt="Profile">
+        </a>
     </nav>
 </header>
 
-<nav class="main-nav">
-    <button>Community</button>
-    <button>Status</button>
-    <button>Store</button>
-</nav>
-
 <main class="detail-container">
 
-  <!-- ===== PRODUCT IMAGES ===== -->
-  <section class="product-images">
+  <!-- LEFT: IMAGES -->
+  <section class="product-gallery">
     <div class="main-image">
-      <img src="../images/model-main.png" alt="3D Model Main">
+      <img src="../images/detail-main.webp" alt="Main">
     </div>
-    <div class="thumbnail-images">
-      <img src="../images/model1.png" alt="Thumbnail 1">
-      <img src="../images/model2.png" alt="Thumbnail 2">
-      <img src="../images/model3.png" alt="Thumbnail 3">
+
+    <div class="thumbnail-row">
+      <img src="../images/detail1.webp" alt="">
+      <img src="../images/detail2.webp" alt="">
+      <img src="../images/detail3.webp" alt="">
+      <img src="../images/detail4.webp" alt="">
     </div>
   </section>
 
-  <!-- ===== PRODUCT INFO ===== -->
-    <aside class="product-info">
-        <h1>3D Model Name</h1>
+  <!-- RIGHT: PRODUCT INFO -->
+  <aside class="product-sidebar">
 
-        <div class="creator">
-            <img src="../images/author.png" alt="Author" class="author-avatar">
-            <p class="author-name">Created by <a href="#">Author Name</a></p>
-        </div>
+    <div class="product-header">
+      <h1>Fox puzzle</h1>
+      <p class="rating">**** (120 reviews)</p>
+    </div>
 
-        <p class="price">Price: $19.99</p>
+    <div class="author-box">
+      <img src="../images/profile.svg" alt="">
+      <span>Author Name</span>
+      <button class="follow-btn">Follow</button>
+    </div>
 
-        <!-- ===== ACTION BUTTONS ===== -->
-        <div class="actions">
-            <button class="download">Download</button>
-            <button class="cart">🛒 Add to Cart</button>
-            <button class="like">❤️ Like</button>
-            <button class="share">🔗 Share</button>
-            <button class="bookmark">🔖 Bookmark</button>
-        </div>
+    <div class="price-box">
+      <p class="price">Price: $4.99</p>
+    </div>
 
-        <p class="description">
-            This is a detailed description of the 3D model. Includes format, polycount, textures, and any other info a buyer needs.
-        </p>
-    </aside>
+    <div class="download-box">
+      <button class="download-btn">
+        <img src="../images/download.svg" alt="">
+        Download
+      </button>
+    </div>
+
+    <div class="icon-actions">
+      <button><img src="../images/cart.svg" alt=""></button>
+      <button><img src="../images/like.svg" alt=""></button>
+      <button><img src="../images/share.svg" alt=""></button>
+      <button><img src="../images/bookmark.svg" alt=""></button>
+    </div>
+
+  </aside>
+
+  <!-- BOTTOM: DESCRIPTION -->
+  <section class="product-description">
+    <div class="tabs">
+      <button class="tab active">Description</button>
+      <button class="tab">Details</button>
+      <button class="tab">Reviews</button>
+    </div>
+
+    <div class="tab-content">
+      <p>
+        Detailed description of the model. Includes formats, textures, polycount and more.
+      </p>
+    </div>
+  </section>
 
 </main>
 
 <footer>
     <div class="logo-footer">
-        <img src="images/logo.png" alt="Logo">
+        <img src="../images/logo.svg" alt="Logo">
     </div>
+
     <div class="footer-links">
-        <div class="about">
-            <h4>About Us</h4>
-            <p>Some info about WTECH.</p>
+        <div>
+            <h4>About</h4>
+            <p>Info about project</p>
         </div>
-        <div class="contact">
+        <div>
             <h4>Contact</h4>
-            <p>Email: contact@wtech.com</p>
-            <p>Phone: +123456789</p>
+            <p>Email: contact@gmail.com</p>
         </div>
     </div>
 </footer>
-
 </body>
-</html>
