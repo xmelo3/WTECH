@@ -191,8 +191,8 @@
 .payment-methods .payment-option {
     border: 1px solid var(--color-border);
     background: var(--color-surface);
-    width: 120px;       /* fixed width */
-    height: 60px;       /* fixed height */
+    width: 120px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -201,6 +201,23 @@
     transition: 0.2s;
 }
 
+
+.payment-option input {
+    display: none;
+}
+
+.payment-option input:checked + img {
+    filter: brightness(0); /* optional – ztmaví logo */
+}
+
+.payment-option input:checked + img {
+    transform: scale(1.05);
+}
+
+.payment-option:has(input:checked) {
+    border: 2px solid #412700;
+    background: #ffefcc;
+}
 
 .payment-methods .payment-option:hover {
     border-color: #412700;
@@ -212,6 +229,41 @@
     max-width: 80%;
     max-height: 80%;
     object-fit: contain;
+}
+
+.shipping-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.shipping-option input {
+    display: none;
+}
+
+.shipping-card {
+    border: 1px solid var(--color-border);
+    padding: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    background: antiquewhite;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: 0.2s;
+}
+
+.shipping-card:hover {
+    border-color: #412700;
+    transform: translateY(-2px);
+}
+
+
+.shipping-option input:checked + .shipping-card {
+    border: 1px solid #412700;
+    background: #ffefcc;
 }
 
 /* Responsive layout */
@@ -242,6 +294,11 @@
 }
 
 @media (max-width: 600px) {
+
+    .summary {
+        margin: 0;
+    }
+
     .products-in-cart .form-row {
         flex-direction: column;
     }
