@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
 
@@ -15,142 +16,129 @@
     </a>
 
     <div class="search">
-        <input type="text" placeholder="Search...">
-        <button>
-            <img src="../images/search.svg" alt="Search">
+        <input type="text" placeholder="Search..." aria-label="Search">
+        <button aria-label="Submit search">
+            <img src="../images/search.svg" alt="">
         </button>
     </div>
 
-    <!-- NEW WRAPPER -->
     <div class="header-right">
         <div class="login-register">
             <a href="login.html" class="nav-btn">Login</a>
             <a href="register.html" class="nav-btn">Register</a>
-            <a href="store.html" class="nav-btn">Store</a>   
+            <a href="store.html" class="nav-btn">Store</a>
         </div>
 
-        <nav class="icons">
-            <a href="index.html">
-                <img src="../images/home.svg" alt="Home">
-            </a>
-            <a href="cart.html">
-                <img src="../images/cart.svg" alt="Cart">
-            </a>
-            <a href="profile.html">
-                <img src="../images/profile.svg" alt="Profile">
-            </a>
+        <nav class="icons" aria-label="Site navigation">
+            <a href="index.html"><img src="../images/home.svg" alt="Home"></a>
+            <a href="cart.html"><img src="../images/cart.svg" alt="Cart"></a>
+            <a href="profile.html"><img src="../images/profile.svg" alt="Profile"></a>
         </nav>
     </div>
 </header>
 
+<!-- ===== MAIN ===== -->
+<main>
 
-<!-- ===== HERO SECTION ===== -->
-<section class="hero">
-    <picture>
-        <source media="(max-width: 480px)" srcset="../images/hero-330w.png">
-        <img src="../images/hero-600w.png" alt="Hero banner">
-    </picture>
-</section>
+    <!-- HERO -->
+    <section class="hero">
+        <picture>
+            <source media="(max-width: 480px)" srcset="../images/hero-330w.png">
+            <img src="../images/hero-600w.png" alt="Hero banner">
+        </picture>
+    </section>
 
-<!-- ===== FEATURED SECTION ===== -->
-<section class="featured">
-    <h2>Featured models</h2>
-    <div class="scroll-wrapper">
-        <div class="scroll-container">
+    <!-- FEATURED -->
+    <section class="featured">
+        <h2>Featured models</h2>
+        <div class="scroll-wrapper">
+            <div class="scroll-container">
 
-            <div class="item">
-                <img src="../images/items/featured1.png" alt="Puzzle">
+                <div class="item">
+                    <img src="../images/items/featured1.png" alt="Puzzle">
                     <div class="overlay">
                         <h4>Puzzle</h4>
                         <p>$19</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
+                </div>
 
-            <div class="item">
-                <img src="../images/items/featured2.png" alt="Headphones">
-                <div class="overlay">
+                <div class="item">
+                    <img src="../images/items/featured2.png" alt="Headphones">
+                    <div class="overlay">
                         <h4>Headphones</h4>
                         <p>$39</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
+                </div>
 
-            <div class="item">
-                <img src="../images/items/featured3.png" alt="F1 car">
-                <div class="overlay">
+                <div class="item">
+                    <img src="../images/items/featured3.png" alt="F1 car">
+                    <div class="overlay">
                         <h4>F1 car</h4>
                         <p>$24</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
+                </div>
 
-            <div class="item">
-                <img src="../images/items/featured4.png" alt="Hall">
-                <div class="overlay">
+                <div class="item">
+                    <img src="../images/items/featured4.png" alt="Hall">
+                    <div class="overlay">
                         <h4>Hall</h4>
                         <p>$59</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
+                </div>
 
-            <div class="item">
-                <img src="../images/items/featured5.png" alt="Well">
-                <div class="overlay">
+                <div class="item">
+                    <img src="../images/items/featured5.png" alt="Well">
+                    <div class="overlay">
                         <h4>Well</h4>
-                        <p>49</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <p>$49</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
-            <div class="item">
-                <img src="../images/items/featured6.png" alt="Lighthouse">
-                <div class="overlay">
+                </div>
+
+                <div class="item">
+                    <img src="../images/items/featured6.png" alt="Lighthouse">
+                    <div class="overlay">
                         <h4>Lighthouse</h4>
-                        <p>59</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <p>$59</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
+                </div>
 
-            <div class="item">
-                <img src="../images/items/featured7.png" alt="Hounted house">
-                <div class="overlay">
-                        <h4>Hounted house</h4>
+                <div class="item">
+                    <img src="../images/items/featured7.png" alt="Haunted house">
+                    <div class="overlay">
+                        <h4>Haunted house</h4>
                         <p>$39</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
-            </div>
+                </div>
 
-            <div class="item">
-                <img src="../images/items/featured8.png" alt="Skateboard">
-                <div class="overlay">
+                <div class="item">
+                    <img src="../images/items/featured8.png" alt="Skateboard">
+                    <div class="overlay">
                         <h4>Skateboard</h4>
                         <p>$55</p>
-                        <button onclick="location.href='detail.html'">Buy now</button>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
                     </div>
+                </div>
+
             </div>
         </div>
-    </div>
+        <a href="store.html" class="see-more">See More</a>
+    </section>
 
-    <button onclick="location.href='store.html'" class="see-more">See More</button>
-</section>
+</main>
 
 <!-- ===== FOOTER ===== -->
-<footer>
-    <div class="logo-footer">
-        <img src="../images/logo.svg" alt="Logo">
-    </div>
-
-    <div class="footer-links">
-        <div>
-            <h4>About</h4>
-            <p>Info about project</p>
-        </div>
-        <div>
-            <h4>Contact</h4>
-            <p>Email: contact@gmail.com</p>
-        </div>
-    </div>
-</footer>
+<iframe src="../components/footer.html"
+        class="footer-frame"
+        title="Site footer"
+        scrolling="no">
+</iframe>
 
 </body>
-</html> 
+</html>

@@ -1,0 +1,105 @@
+/* ============================================================
+   HERO
+   ============================================================ */
+section.hero {
+    max-height: 469px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+section.hero img {
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ============================================================
+   FEATURED
+   ============================================================ */
+section.featured {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.featured h2 {
+    align-self: flex-start;
+    margin-bottom: var(--space-sm);
+}
+
+.scroll-wrapper {
+    width: 100%;
+    overflow: hidden;
+}
+
+.scroll-container {
+    display: flex;
+    gap: var(--space-sm);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar { display: none; }
+
+.scroll-container .item {
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 calc(25% - 10px);
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--color-border);
+}
+
+.scroll-container .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item:hover .overlay { opacity: 1; }
+
+.overlay-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: var(--color-brand);
+    color: var(--color-brand-text);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s, background 0.2s;
+}
+
+.overlay-btn:hover {
+    opacity: 1;
+    background: rgb(122, 79, 15);
+    color: #000;
+}
+
+.see-more {
+    display: inline-block;
+    margin-top: var(--space-sm);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: 8px;
+    color: var(--color-brand-text);
+    background-color: var(--color-brand);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.see-more:hover {
+    opacity: 0.85;
+}
