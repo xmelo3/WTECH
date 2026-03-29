@@ -139,6 +139,7 @@ header .search {
 header .search input {
     flex: 1;
     max-width: 400px;
+    min-width: 0; 
 }
 
 header .search button {
@@ -154,7 +155,7 @@ header .search img {
 }
 
 .header-right {
-    flex: 1;
+    flex: 0 0 auto;  
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -198,12 +199,10 @@ header nav.icons img {
    FOOTER
    ============================================================ */
 
-/* Full-bleed background wrapper */
 .footer-wrap {
     background-color: var(--color-brand);
 }
 
-/* iframe */
 .footer-frame {
     display: block;
     width: 100%;
@@ -211,7 +210,6 @@ header nav.icons img {
     border: none;
 }
 
-/* Inside the iframe */
 body.iframe-footer {
     margin: 0;
     padding: 0;
@@ -424,15 +422,20 @@ footer {
    RESPONSIVE
    ============================================================ */
 
-/* Medium - 2 rows layout */
+/* Medium — 2-header */
 @media (max-width: 900px) {
+    .header-frame {
+        height: 135px;
+    }
+
     header {
         flex-wrap: wrap;
         padding: 1em var(--header-pad-x);
         gap: 8px;
+        min-height: 135px;
+        align-content: center;
     }
 
-    /* Row 1: Logo + Search */
     header .logo {
         flex: 0 0 auto;
     }
@@ -442,11 +445,11 @@ footer {
         max-width: 100%;
     }
 
-    /* Row 2: Buttons + Icons */
     .header-right {
         flex: 0 0 100%;
         justify-content: flex-end;
         gap: var(--space-sm);
+        min-width: 0;
     }
 
     .login-register {
@@ -456,7 +459,6 @@ footer {
         gap: 6px;
     }
 
-    /* Icons always fixed, never shrink */
     header nav.icons {
         gap: var(--space-sm);
         flex-shrink: 0;
@@ -471,8 +473,30 @@ footer {
 
 /* Mobile */
 @media (max-width: 480px) {
+    .header-frame {
+        height: 120px;
+    }
+
     header {
         padding: 0.8em 1em;
+        gap: 6px;
+        min-height: 120px;
+    }
+
+    header .search input {
+        min-width: 0; 
+    }
+
+    .header-right {
+        flex-wrap: wrap; 
+        gap: 6px;
+    }
+
+    .login-register {
+        flex: 1 1 auto;
+        min-width: 0;   
+        flex-wrap: wrap;
+        gap: 4px;
     }
 
     .login-register .nav-btn {
@@ -480,7 +504,17 @@ footer {
         padding: 4px 8px;
     }
 
-    /* Footer centred and stacked */
+    header nav.icons {
+        flex: 0 0 auto;  
+        flex-shrink: 0;
+        gap: 0.6em;
+    }
+
+    header nav.icons img {
+        width: 1.3em;
+        height: 1.3em;
+    }
+
     footer {
         flex-direction: column;
         align-items: center;
@@ -500,6 +534,23 @@ footer {
     }
 
     .footer-frame { height: 240px; }
+}
+
+/* hodinky? */
+@media (max-width: 360px) {
+    .login-register .nav-btn {
+        font-size: 0.68rem;
+        padding: 3px 6px;
+    }
+
+    header nav.icons {
+        gap: 0.4em;
+    }
+
+    header nav.icons img {
+        width: 1.15em;
+        height: 1.15em;
+    }
 }
 
 /* Tablet */

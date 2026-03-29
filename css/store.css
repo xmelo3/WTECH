@@ -180,3 +180,7 @@
         width: 100%;
     }
 }
+
+.card-actions .action-btn {
+    background: none !important;
+}

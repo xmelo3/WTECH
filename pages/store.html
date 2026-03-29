@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/store.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/store.css">
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
 <iframe src="./components/header.html"
         class="header-frame"
         title="Site header"
         scrolling="no">
 </iframe>
 
+<nav class="main-nav">
+    <a href="#" class="nav-btn">Community</a>
+    <a href="#" class="nav-btn">Status</a>
+    <a href="/store" class="nav-btn">Store</a>
+</nav>
 
-
-<!-- ===== STORE ===== -->
 <main class="store-page">
 
     <aside class="filters">
@@ -61,7 +63,6 @@
 
         <div class="product-grid" id="productGrid"></div>
 
-        <!-- ✅ Pagination moved inside .products so it stays in the content column -->
         <div class="pagination">
             <button class="page-btn">Prev</button>
             <button class="page-number active">1</button>
@@ -74,36 +75,36 @@
 
 </main>
 
-<!-- ===== FOOTER ===== -->
-<iframe src="./components/footer.html"
-        class="footer-frame"
-        title="Site footer"
-        scrolling="no">
-</iframe>
+<div class="footer-wrap">
+    <iframe src="/components/footer.html"
+            class="footer-frame"
+            title="Site footer"
+            scrolling="no">
+    </iframe>
+</div>
 
-<!-- ✅ Script at the bottom — DOM exists by the time this runs -->
 <script>
 const products = [
-    { name: "Animals", price: 12 },
-    { name: "Deer", price: 18 },
-    { name: "Fighter Jet", price: 9 },
-    { name: "Army", price: 22 },
-    { name: "Charizard", price: 15 },
-    { name: "Border Collie", price: 30 },
-    { name: "Catan Wheat", price: 8 },
-    { name: "These Nuts", price: 11 },
-    { name: "Banana", price: 40 },
-    { name: "Citrus", price: 19 },
-    { name: "Broccoli Head", price: 13 },
-    { name: "Chihuahua", price: 21 },
-    { name: "Go Eat Him", price: 17 },
-    { name: "Dragon", price: 25 },
-    { name: "Surikata", price: 6 },
-    { name: "Doge Coin", price: 14 },
-    { name: "Fancy Dog", price: 32 },
-    { name: "Linus", price: 27 },
-    { name: "Guard Dog", price: 10 },
-    { name: "Skull", price: 45 }
+    { name: "Animals",      price: 12 },
+    { name: "Deer",         price: 18 },
+    { name: "Fighter Jet",  price: 9  },
+    { name: "Army",         price: 22 },
+    { name: "Charizard",    price: 15 },
+    { name: "Border Collie",price: 30 },
+    { name: "Catan Wheat",  price: 8  },
+    { name: "These Nuts",   price: 11 },
+    { name: "Banana",       price: 40 },
+    { name: "Citrus",       price: 19 },
+    { name: "Broccoli Head",price: 13 },
+    { name: "Chihuahua",    price: 21 },
+    { name: "Go Eat Him",   price: 17 },
+    { name: "Dragon",       price: 25 },
+    { name: "Surikata",     price: 6  },
+    { name: "Doge Coin",    price: 14 },
+    { name: "Fancy Dog",    price: 32 },
+    { name: "Linus",        price: 27 },
+    { name: "Guard Dog",    price: 10 },
+    { name: "Skull",        price: 45 }
 ];
 
 const grid = document.getElementById("productGrid");
@@ -112,16 +113,22 @@ products.forEach((product, i) => {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-    <a href="detail.html">
-        <img src="../images/st${i+1}.webp" alt="${product.name}">
-    </a>
-    <h4>${product.name}</h4>
-    <p>$${product.price}</p>
-    <div class="card-actions">
-        <button class="action-btn"><img src="../images/cart.svg"></button>
-        <button class="action-btn"><img src="../images/share.svg"></button>
-        <button class="action-btn favorite"><img src="../images/heart_empty.svg"></button>
-    </div>
+        <a href="/detail">
+            <img src="/images/st${i + 1}.webp" alt="${product.name}">
+        </a>
+        <h4>${product.name}</h4>
+        <p>$${product.price}</p>
+        <div class="card-actions">
+            <button class="action-btn" aria-label="Add to cart">
+                <img src="/images/cart.svg" alt="">
+            </button>
+            <button class="action-btn" aria-label="Share">
+                <img src="/images/share.svg" alt="">
+            </button>
+            <button class="action-btn favorite" aria-label="Add to favourites">
+                <img src="/images/heart.svg" alt="">
+            </button>
+        </div>
     `;
     grid.appendChild(card);
 });
