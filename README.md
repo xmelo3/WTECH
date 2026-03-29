@@ -1,11 +1,15 @@
 # WTECH
 https://github.com/kurice/wtech26/tree/main
 
-# Project: 3D figure eshop
+## 1. odovzdanie todo 
 
-## For next week
-- skica Homepage vo figme - DONE
-- full html + css layout (optional)
+1. fáza projektu (max. 24 bodov)
+skice všetkých obrazoviek používateľského rozhrania pre dané prípady použitia (PNG/JPG súbory, max. 6 bodov)
+šablóny vytvorené pre všetky požadované prípady použitia (HTML + CSS súbory, max. 5b), Pozor! - nesmiete odovzdať už aplikačné riešenie v Laravel rámci, tzn. šablóny vytvorené v Blade
+responzívny dizajn, správne použitie zvoleného FE rámca (max. 5b)
+správne použitie HTML5 elementov (max. 4b)
+formátovanie a logická štruktúra zdrojového kódu, konzistencia/jednotná konvencia pri názvosloví identifikátorov (max. 2b)
+UML diagram FYZICKĚHO dátového modelu relačnej databázy (PNG/JPG súbor, max. 2b)
   
 ## TO DO:
 - think about scope
