@@ -107,9 +107,7 @@
 
 /* ============================================================
    CARD ACTIONS
-   ✅ Use .action-btn to avoid specificity fight with
-      .product-card button in style.css
-   ============================================================ */
+============================================================ */
 
 .card-actions {
     display: flex;
@@ -119,7 +117,7 @@
 }
 
 .card-actions .action-btn {
-    background: none !important;  /* override style.css .product-card button */
+    background: none !important;
     border: none;
     padding: 6px;
     border-radius: 6px;
@@ -138,8 +136,7 @@
 
 /* ============================================================
    PAGINATION
-   ✅ Was completely missing — buttons had no styles at all
-   ============================================================ */
+============================================================ */
 
 .pagination {
     display: flex;
@@ -172,7 +169,7 @@
 
 /* ============================================================
    RESPONSIVE
-   ============================================================ */
+============================================================ */
 
 @media (max-width: 768px) {
     .store-page {
