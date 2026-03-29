@@ -102,19 +102,62 @@ button:hover,
 /* ============================================================
    HEADER
    ============================================================ */
+
+.header-frame {
+    display: block;
+    width: 100%;
+    height: 100px;
+    border: none;
+}
+
 header {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
     padding: 1em var(--header-pad-x);
     max-width: var(--max-width);
     margin: 0 auto;
     width: 100%;
 }
 
-.header-right {
+header .logo {
+    flex: 1;
     display: flex;
     align-items: center;
+}
+
+header .logo img {
+    height: var(--logo-height);
+}
+
+header .search {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+}
+
+header .search input {
+    flex: 1;
+    max-width: 400px;
+}
+
+header .search button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+}
+
+header .search img {
+    width:  var(--search-icon-size);
+    height: var(--search-icon-size);
+}
+
+.header-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     gap: var(--space-md);
 }
 
@@ -129,34 +172,10 @@ header {
     white-space: nowrap;
 }
 
-header .logo img {
-    height: var(--logo-height);
-}
-
-header .search {
-    flex: 1;
-    min-width: 0;
-    max-width: 600px;
-    display: flex;
-}
-
-header .search input { flex: 1; }
-
-header .search button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: none;
-}
-
-header .search img {
-    width:  var(--search-icon-size);
-    height: var(--search-icon-size);
-}
-
 header nav.icons {
     display: flex;
     gap: var(--space-md);
+    flex-shrink: 0;
 }
 
 header nav.icons img {
@@ -164,17 +183,10 @@ header nav.icons img {
     height: var(--icon-size);
 }
 
+
 /* ============================================================
    MAIN NAVIGATION
    ============================================================ */
-nav.main-nav {
-    display: flex;
-    gap: var(--space-sm);
-    margin: 0 auto var(--space-md);
-    padding: 0 var(--header-pad-x);
-    max-width: var(--max-width);
-    overflow-x: auto;
-}
 
 .nav-btn {
     text-decoration: none;
@@ -412,27 +424,60 @@ footer {
    RESPONSIVE
    ============================================================ */
 
-/* Mobile */
-@media (max-width: 600px) {
+/* Medium - 2 rows layout */
+@media (max-width: 900px) {
     header {
-        display: block;
-        padding: 1em;
+        flex-wrap: wrap;
+        padding: 1em var(--header-pad-x);
+        gap: 8px;
     }
 
-    .logo,
-    .search,
-    .header-right {
-        width: 100%;
-        margin-bottom: 10px;
+    /* Row 1: Logo + Search */
+    header .logo {
+        flex: 0 0 auto;
     }
 
-    .search        { display: flex; }
-    .search input  { flex: 1; }
+    header .search {
+        flex: 1;
+        max-width: 100%;
+    }
 
+    /* Row 2: Buttons + Icons */
     .header-right {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex: 0 0 100%;
+        justify-content: flex-end;
+        gap: var(--space-sm);
+    }
+
+    .login-register {
+        flex: 1;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    /* Icons always fixed, never shrink */
+    header nav.icons {
+        gap: var(--space-sm);
+        flex-shrink: 0;
+    }
+
+    header nav.icons img {
+        width: 1.5em;
+        height: 1.5em;
+        flex-shrink: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    header {
+        padding: 0.8em 1em;
+    }
+
+    .login-register .nav-btn {
+        font-size: 0.75rem;
+        padding: 4px 8px;
     }
 
     /* Footer centred and stacked */
@@ -455,10 +500,6 @@ footer {
     }
 
     .footer-frame { height: 240px; }
-
-    .profile-posts {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 /* Tablet */
@@ -489,9 +530,9 @@ footer {
     }
 }
 
-/* Large — cap and left-align */
+/* Large */
 @media (min-width: 1400px) {
     footer {
         margin: 0 auto;
     }
-}   
+}
