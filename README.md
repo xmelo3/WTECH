@@ -24,7 +24,6 @@ Homepage: 1. Katalóg + detail 2. Košík, ...
 Login: 1. Login
 Profil
 
-
 Start: Market analysis, wireframes, testing, design, development, testing, deployment
 
 ## WHAT TO USE:

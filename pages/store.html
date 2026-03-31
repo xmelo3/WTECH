@@ -15,12 +15,6 @@
         scrolling="no">
 </iframe>
 
-<nav class="main-nav">
-    <a href="#" class="nav-btn">Community</a>
-    <a href="#" class="nav-btn">Status</a>
-    <a href="/store" class="nav-btn">Store</a>
-</nav>
-
 <main class="store-page">
 
     <aside class="filters">
@@ -113,7 +107,7 @@ products.forEach((product, i) => {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-        <a href="/detail">
+        <a href="./detail.html">
             <img src="/images/st${i + 1}.webp" alt="${product.name}">
         </a>
         <h4>${product.name}</h4>
@@ -126,7 +120,7 @@ products.forEach((product, i) => {
                 <img src="/images/share.svg" alt="">
             </button>
             <button class="action-btn favorite" aria-label="Add to favourites">
-                <img src="/images/heart.svg" alt="">
+                <img src="/images/heart_full.svg" alt="">
             </button>
         </div>
     `;
