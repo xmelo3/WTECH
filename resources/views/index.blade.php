@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+</head>
+<body>
+
+<x-header />
+
+<main>
+
+    <section class="hero">
+        <picture>
+            <source media="(max-width: 480px)" srcset="../images/hero-330w.png">
+            <img src="../images/hero-600w.png" alt="Hero banner">
+        </picture>
+    </section>
+
+    <section class="featured">
+        <h2>Featured models</h2>
+        <div class="scroll-wrapper">
+            <div class="scroll-container">
+
+                <div class="item">
+                    <img src="../images/st5.webp" alt="Charizard">
+                    <div class="overlay">
+                        <h4>Charizard</h4>
+                        <p>$19</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/st6.webp" alt="Border Collie">
+                    <div class="overlay">
+                        <h4>Border Collie</h4>
+                        <p>$39</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="../images/st9.webp" alt="Banana">
+                    <div class="overlay">
+                        <h4>Banana</h4>
+                        <p>$24</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="../images/st14.webp" alt="Toothless">
+                    <div class="overlay">
+                        <h4>Toothless</h4>
+                        <p>$59</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="../images/st15.webp" alt="Surikata">
+                    <div class="overlay">
+                        <h4>Surikata</h4>
+                        <p>$49</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="../images/st16.webp" alt="Doge">
+                    <div class="overlay">
+                        <h4>Doge</h4>
+                        <p>$59</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="../images/st18.webp" alt="Pinguin">
+                    <div class="overlay">
+                        <h4>Pinguin</h4>
+                        <p>$39</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="../images/st20.webp" alt="Dragon Skull">
+                    <div class="overlay">
+                        <h4>Dragon Skull</h4>
+                        <p>$55</p>
+                        <a href="detail.html" class="overlay-btn">Buy now</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <a href="store.html" class="see-more">See More</a>
+    </section>
+
+</main>
+
+<x-footer />
+
+</body>
+</html>
