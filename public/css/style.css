@@ -358,7 +358,15 @@ footer {
 /* ============================================================
    FORM
    ============================================================ */
+form {
+    margin:0; 
+    padding:0; 
+    display:contents;
+}
+
 .form {
+    text-align: center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);

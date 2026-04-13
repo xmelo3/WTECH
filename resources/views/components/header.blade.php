@@ -13,20 +13,17 @@
     <div class="header-right">
         <div class="login-register">
             @guest
-                <a href="{{ route('login') }}" class="nav-btn">Login</a>
-                <a href="{{ route('register') }}" class="nav-btn">Register</a>
-            @endguest
-
-            @auth
-                <a href="{{ route('logout') }}" class="nav-btn">Logout</a>
-                <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                <a href="{{ route('login') }}" class="nav-btn">{{ __('Login') }}</a>
+                <a href="{{ route('register') }}" class="nav-btn">{{ __('Register') }}</a>
+            @else
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button class="nav-btn" type="submit">Logout</button>
+                    <button type="submit" class="nav-btn">{{ __('Log Out') }}</button>
                 </form>
-            @endauth
-
-            <a href="{{ route('store') }}" class="nav-btn">Store</a>
+            @endguest
+            <a href="{{ route('store') }}" class="nav-btn">{{__('Store') }}</a>
         </div>
+
 
         <nav class="icons" aria-label="Site navigation">
             <a href="{{ route('home') }}">
@@ -35,7 +32,7 @@
             <a href="{{ route('cart') }}">
                 <img src="{{ asset('images/cart.svg') }}" alt="Cart">
             </a>
-            <a href="{{ route('profile.edit') }}">
+            <a href="{{ route('profile') }}">
                 <img src="{{ asset('images/profile.svg') }}" alt="Profile">
             </a>
         </nav>
