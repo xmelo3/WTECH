@@ -11,6 +11,14 @@
 
 <x-header />
 
+@auth
+    <p>LOGGED IN as {{ auth()->user()->email }}</p>
+@endauth
+
+@guest
+    <p>NOT logged in</p>
+@endguest
+
 <main class="store-page">
 
     <aside class="filters">
@@ -69,27 +77,29 @@
 
 <script>
 const products = [
-    { name: "Animals",      price: 12 },
-    { name: "Deer",         price: 18 },
-    { name: "Fighter Jet",  price: 9  },
-    { name: "Army",         price: 22 },
-    { name: "Charizard",    price: 15 },
-    { name: "Border Collie",price: 30 },
-    { name: "Catan Wheat",  price: 8  },
-    { name: "These Nuts",   price: 11 },
-    { name: "Banana",       price: 40 },
-    { name: "Citrus",       price: 19 },
-    { name: "Broccoli Head",price: 13 },
-    { name: "Chihuahua",    price: 21 },
-    { name: "Go Eat Him",   price: 17 },
-    { name: "Dragon",       price: 25 },
-    { name: "Surikata",     price: 6  },
-    { name: "Doge Coin",    price: 14 },
-    { name: "Fancy Dog",    price: 32 },
-    { name: "Linus",        price: 27 },
-    { name: "Guard Dog",    price: 10 },
-    { name: "Skull",        price: 45 }
+    { name: "Animals",       price: 12 },
+    { name: "Deer",          price: 18 },
+    { name: "Fighter Jet",   price: 9  },
+    { name: "Army",          price: 22 },
+    { name: "Charizard",     price: 15 },
+    { name: "Border Collie", price: 30 },
+    { name: "Catan Wheat",   price: 8  },
+    { name: "These Nuts",    price: 11 },
+    { name: "Banana",        price: 40 },
+    { name: "Citrus",        price: 19 },
+    { name: "Broccoli Head", price: 13 },
+    { name: "Chihuahua",     price: 21 },
+    { name: "Go Eat Him",    price: 17 },
+    { name: "Dragon",        price: 25 },
+    { name: "Surikata",      price: 6  },
+    { name: "Doge Coin",     price: 14 },
+    { name: "Fancy Dog",     price: 32 },
+    { name: "Linus",         price: 27 },
+    { name: "Guard Dog",     price: 10 },
+    { name: "Skull",         price: 45 }
 ];
+
+const detailUrl = "{{ route('detail') }}"; // ✅ use Laravel route here
 
 const grid = document.getElementById("productGrid");
 
@@ -97,7 +107,7 @@ products.forEach((product, i) => {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-        <a href="./detail.html">
+        <a href="${detailUrl}">
             <img src="/images/st${i + 1}.webp" alt="${product.name}">
         </a>
         <h4>${product.name}</h4>

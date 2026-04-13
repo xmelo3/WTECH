@@ -1,90 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payment</title>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 <body>
 
-
 <x-header />
+
+@auth
+    <p>LOGGED IN as {{ auth()->user()->email }}</p>
+@endauth
+
+@guest
+    <p>NOT logged in</p>
+@endguest
 
 <main class="cart-page">
 
-  <div class="back-button">
-    <button onclick="history.back()">← Back</button>
-  </div>
-
-  <div class="breadcrumbs">
-    <a href="cart.html">Cart</a>
-    <span>→</span>
-    <a href="checkout.html">Checkout</a>
-    <span>→</span>
-    <span class="current">Payment</span>
-  </div>
-
-
-  <div class="cart-container">
-
-    <div class="products-in-cart">
-
-      <h3>Payment Method</h3>
-
-      <div class="payment-methods">
-
-        <label class="payment-option">
-          <input type="radio" name="payment" checked>
-          <img src="../images/gpayr.svg" alt="GPay">
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="payment">
-          <img src="../images/Visa.svg" alt="Visa">
-        </label>
-
-        <label class="payment-option">
-          <input type="radio" name="payment">
-          <img src="../images/ApplePay.svg" alt="Apple Pay">
-        </label>
-
-      </div>
-
-      <h3>Card Information</h3>
-      <div class="form">
-        <div class="form-row">
-          <input type="text" placeholder="Name on Card">
-          <input type="text" placeholder="CCV" class="postal-code">
-        </div>
-
-        <div class="form-row">
-          <input type="text" placeholder="Card Number" class="address">
-          <input type="text" placeholder="Expiry Date" class="postal-code">
-        </div>
-      </div>
-
+    <div class="back-button">
+        <button onclick="history.back()">← Back</button>
     </div>
 
-    <div class="summary">
-      <h2>Summary</h2>
-      <hr>
-      <ul class="summary-items">
-        <li>Charizard × 1 → 24€</li>
-        <li>Border Collie × 2 → 118€</li>
-        <li>Shipping → 2.99€</li>
-      </ul>
-      <hr>
-      <p class="total-price">Total price: 144.99€</p>
-      <button class="checkout-btn" onclick="location.href='store.html'">Pay Now</button>
+    <div class="breadcrumbs">
+        <a href="{{ route('cart') }}">Cart</a>
+        <span>→</span>
+        <a href="{{ route('checkout') }}">Checkout</a>
+        <span>→</span>
+        <span class="current">Payment</span>
     </div>
 
-  </div>
+    <div class="cart-container">
+        <div class="products-in-cart">
+            <h3>Payment Method</h3>
+            <div class="payment-methods">
+                <label class="payment-option">
+                    <input type="radio" name="payment" checked>
+                    <img src="{{ asset('images/gpayr.svg') }}" alt="GPay">
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment">
+                    <img src="{{ asset('images/Visa.svg') }}" alt="Visa">
+                </label>
+                <label class="payment-option">
+                    <input type="radio" name="payment">
+                    <img src="{{ asset('images/ApplePay.svg') }}" alt="Apple Pay">
+                </label>
+            </div>
+
+            <h3>Card Information</h3>
+            <div class="form">
+                <div class="form-row">
+                    <input type="text" placeholder="Name on Card">
+                    <input type="text" placeholder="CCV" class="postal-code">
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Card Number" class="address">
+                    <input type="text" placeholder="Expiry Date" class="postal-code">
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h2>Summary</h2>
+            <hr>
+            <ul class="summary-items">
+                <li>Charizard × 1 → 24€</li>
+                <li>Border Collie × 2 → 118€</li>
+                <li>Shipping → 2.99€</li>
+            </ul>
+            <hr>
+            <p class="total-price">Total price: 144.99€</p>
+            <button class="checkout-btn" onclick="location.href='{{ route('store') }}'">Pay Now</button>
+        </div>
+    </div>
 
 </main>
 
 <x-footer />
-
 </body>
 </html>

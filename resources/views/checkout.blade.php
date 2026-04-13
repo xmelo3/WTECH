@@ -9,88 +9,88 @@
 </head>
 <body>
 
-
 <x-header />
+
+@auth
+    <p>LOGGED IN as {{ auth()->user()->email }}</p>
+@endauth
+
+@guest
+    <p>NOT logged in</p>
+@endguest
 
 <main class="cart-page">
 
-<div class="back-button">
-    <button onclick="location.href='cart.html'">← Back</button>
-</div>
+    <div class="back-button">
+        <button onclick="location.href='{{ route('cart') }}'">← Back</button>
+    </div>
 
-<div class="breadcrumbs">
-    <a href="cart.html">Cart</a>
-    <span>→</span>
-    <span class="current">Checkout</span>
-</div>
+    <div class="breadcrumbs">
+        <a href="{{ route('cart') }}">Cart</a>
+        <span>→</span>
+        <span class="current">Checkout</span>
+    </div>
 
-<div class="cart-container">
-    <div class="products-in-cart">
-        <div class="form">
-            <h2>Shipping</h2>
-            <div class="shipping-methods">
-                <label class="shipping-option">
-                    <input type="radio" name="shipping" checked>
-                    <div class="shipping-card">
-                        <h4>AlzaBox</h4>
-                        <p>Pickup point</p>
-                        <span>€2.99</span>
-                    </div>
-                </label>
+    <div class="cart-container">
+        <div class="products-in-cart">
+            <div class="form">
+                <h2>Shipping</h2>
+                <div class="shipping-methods">
+                    <label class="shipping-option">
+                        <input type="radio" name="shipping" checked>
+                        <div class="shipping-card">
+                            <h4>AlzaBox</h4>
+                            <p>Pickup point</p>
+                            <span>€2.99</span>
+                        </div>
+                    </label>
+                    <label class="shipping-option">
+                        <input type="radio" name="shipping">
+                        <div class="shipping-card">
+                            <h4>Courier</h4>
+                            <p>Delivery to address</p>
+                            <span>€2.99</span>
+                        </div>
+                    </label>
+                </div>
 
-                <label class="shipping-option">
-                    <input type="radio" name="shipping">
-                    <div class="shipping-card">
-                        <h4>Courier</h4>
-                        <p>Delivery to address</p>
-                        <span>€2.99</span>
-                    </div>
-                </label>
-
-            </div>
-
-            <h2>Information</h2>
-            <div class="form-row">
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Surname">
-            </div>
-            
-            <div class="form-row">
-                <input type="text" placeholder="Email">
-            </div>
-            <div class="form-row">
-                <input type="text" placeholder="City">
-                <input type="text" placeholder="Postal code" class="postal-code">
-            </div>
-
-            <div class="form-row">
-                <input type="text" placeholder="Address" class="address">
-            </div>
-
-            <div class="form-row">
-                <input type="text" placeholder="Phone Number">
+                <h2>Information</h2>
+                <div class="form-row">
+                    <input type="text" placeholder="Name">
+                    <input type="text" placeholder="Surname">
+                </div>
+                <div class="form-row">
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="City">
+                    <input type="text" placeholder="Postal code" class="postal-code">
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Address" class="address">
+                </div>
+                <div class="form-row">
+                    <input type="tel" placeholder="Phone Number">
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="summary">
-      <h2>Summary</h2>
-      <hr>
-      <ul class="summary-items">
-        <li>Charizard × 1 → 24€</li>
-        <li>Border Collie × 2 → 118€</li>
-        <li>Shipping → 2.99€</li>
-      </ul>
-      <hr>
-      <p class="total-price">Total price: 144.99€</p>
-      <button class="checkout-btn" onclick="location.href='payment.html'">Proceed to payment</button>
+        <div class="summary">
+            <h2>Summary</h2>
+            <hr>
+            <ul class="summary-items">
+                <li>Charizard × 1 → 24€</li>
+                <li>Border Collie × 2 → 118€</li>
+                <li>Shipping → 2.99€</li>
+            </ul>
+            <hr>
+            <p class="total-price">Total price: 144.99€</p>
+            <button class="checkout-btn" onclick="location.href='{{ route('payment') }}'">Proceed to payment</button>
+        </div>
     </div>
-
-</div>  
 
 </main>
 
 <x-footer />
-
 </body>
 </html>

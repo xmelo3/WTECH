@@ -11,15 +11,23 @@
 
 <x-header />
 
+@auth
+    <p>LOGGED IN as {{ auth()->user()->email }}</p>
+@endauth
+
+@guest
+    <p>NOT logged in</p>
+@endguest
+
 <main class="profile-page">
 
     <section class="profile-top">
         <div class="avatar-wrap">
-            <img src="../images/st1.webp" alt="Avatar" class="avatar-img">
+            <img src="{{ asset('images/st1.webp') }}" alt="Avatar" class="avatar-img">
         </div>
         <div class="bio-wrap">
             <p class="bio-label">BIO</p>
-            <p class="bio-text">Welcome to my profile! I collect and share 3D models — animals, vehicles, characters and more. Feel free to browse my posts and grab something you like.</p>
+            <p class="bio-text">Welcome to my profile! I collect and share 3D models — animals, vehicles, characters and more.</p>
         </div>
     </section>
 
@@ -32,29 +40,21 @@
         <div class="posts-search">
             <input type="text" placeholder="Search posts...">
             <button class="filter-btn">
-                <img src="../images/search.svg" alt="Filter">
+                <img src="{{ asset('images/search.svg') }}" alt="Filter">
             </button>
         </div>
     </section>
 
     <section class="profile-posts">
-        <a href="detail.html" class="post-item"><img src="../images/st2.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st3.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st4.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st5.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st6.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st7.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st8.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st9.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st10.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st11.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st12.webp" alt="Post"></a>
-        <a href="detail.html" class="post-item"><img src="../images/st13.webp" alt="Post"></a>
+        @foreach(range(2, 13) as $i)
+            <a href="{{ route('detail') }}" class="post-item">
+                <img src="{{ asset('images/st' . $i . '.webp') }}" alt="Post">
+            </a>
+        @endforeach
     </section>
 
 </main>
 
 <x-footer />
-
 </body>
 </html>

@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-
 <header>
     <a href="{{ route('home') }}" class="logo">
         <img src="{{ asset('images/logo.svg') }}" alt="Logo">
@@ -20,8 +12,19 @@
 
     <div class="header-right">
         <div class="login-register">
-            <a href="{{ route('login') }}" class="nav-btn">Login</a>
-            <a href="{{ route('register') }}" class="nav-btn">Register</a>
+            @guest
+                <a href="{{ route('login') }}" class="nav-btn">Login</a>
+                <a href="{{ route('register') }}" class="nav-btn">Register</a>
+            @endguest
+
+            @auth
+                <a href="{{ route('logout') }}" class="nav-btn">Logout</a>
+                <form method="POST" action="{{ route('logout') }}" class="logout-form">
+                    @csrf
+                    <button class="nav-btn" type="submit">Logout</button>
+                </form>
+            @endauth
+
             <a href="{{ route('store') }}" class="nav-btn">Store</a>
         </div>
 
@@ -32,12 +35,9 @@
             <a href="{{ route('cart') }}">
                 <img src="{{ asset('images/cart.svg') }}" alt="Cart">
             </a>
-            <a href="{{ route('profile') }}">
+            <a href="{{ route('profile.edit') }}">
                 <img src="{{ asset('images/profile.svg') }}" alt="Profile">
             </a>
         </nav>
     </div>
 </header>
-
-</body>
-</html>
