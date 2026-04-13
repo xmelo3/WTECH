@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\StoreController;
 
 
 Route::middleware('auth')->group(function () {
@@ -23,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/cart/{cart}', [CartController::class, 'remove'])->name('cart.remove');
 });
-Route::get('/store', [ProductController::class, 'index'])->name('store');
+Route::get('/store', [StoreController::class, 'index'])->name('store');
 Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/', fn () => view('index'))->name('home');
 Route::get('/detail', fn () => view('detail'))->name('detail');

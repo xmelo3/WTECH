@@ -17,11 +17,17 @@
     background: #f5f5f5;
     padding: 20px;
     border: 1px solid #ddd;
+    /* Keep filters self-contained even when parent form has display:contents */
+    align-self: flex-start;
 }
 
 .filters h3 {
     margin-bottom: 10px;
     margin-top: 20px;
+}
+
+.filters h3:first-child {
+    margin-top: 0;
 }
 
 .filter-group {
@@ -34,11 +40,115 @@
     margin-top: 20px;
     width: 100%;
     padding: 10px;
-    background: #412700;
-    color: #ffcb7d;
+    background: var(--color-brand);
+    color: var(--color-brand-text);
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: opacity 0.2s;
+}
+
+.apply-btn:hover {
+    opacity: 0.85;
+}
+
+.clear-filters {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #777;
+    margin-top: 8px;
+    text-decoration: underline;
+    cursor: pointer;
+    text-decoration-color: #bbb;
+}
+
+.clear-filters:hover {
+    color: #333;
+    text-decoration-color: #555;
+}
+
+/* ============================================================
+   PRICE RANGE SLIDER
+   ============================================================ */
+
+.price-range-wrapper {
+    margin-top: 8px;
+}
+
+.price-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--color-brand);
+}
+
+.range-track-container {
+    position: relative;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    margin: 16px 0 6px;
+}
+
+.range-track-fill {
+    position: absolute;
+    height: 100%;
+    background: var(--color-brand);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.range-inputs {
+    position: relative;
+    height: 30px;
+    margin-top: -20px;
+}
+
+.range-inputs input[type="range"] {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+}
+
+.range-inputs input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: all;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-brand);
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    transition: transform 0.15s;
+}
+
+.range-inputs input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.range-inputs input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-brand);
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
 }
 
 /* ============================================================
@@ -47,6 +157,7 @@
 
 .products {
     flex: 1;
+    min-width: 0; /* prevent overflow in flex context */
 }
 
 .store-top {
@@ -57,7 +168,11 @@
 }
 
 .store-top select {
-    padding: 6px;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
 }
 
 /* ============================================================
@@ -74,6 +189,20 @@
    PRODUCT CARD
    ============================================================ */
 
+.product-card {
+    padding: 12px;
+    text-align: center;
+    background: var(--color-bg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.13);
+}
+
 .product-card a {
     display: block;
 }
@@ -82,32 +211,23 @@
     width: 100%;
     height: 140px;
     object-fit: cover;
-}
-
-.product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-}
-
-.product-card > img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .product-card h4 {
-    margin: 5px 0;
+    margin: 8px 0 4px;
+    font-size: 0.95rem;
 }
 
 .product-card p {
     font-weight: bold;
     margin-bottom: 10px;
+    color: var(--color-brand);
 }
 
 /* ============================================================
    CARD ACTIONS
-============================================================ */
+   ============================================================ */
 
 .card-actions {
     display: flex;
@@ -116,60 +236,98 @@
     margin-top: 10px;
 }
 
-.card-actions .action-btn {
+.action-btn {
     background: none !important;
-    border: none;
+    border: none !important;
     padding: 6px;
     border-radius: 6px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.card-actions .action-btn:hover {
+.action-btn:hover {
     background: #f0f0f0 !important;
 }
 
-.card-actions img {
+.action-btn img {
     width: 20px;
     height: 20px;
+    display: block;
 }
 
 /* ============================================================
    PAGINATION
-============================================================ */
+   ============================================================ */
 
 .pagination {
     display: flex;
     justify-content: center;
+    margin-top: 40px;
+}
+
+.custom-pagination {
+    display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 30px;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
-.page-btn,
-.page-number {
-    padding: 8px 14px;
-    border: 1px solid #ddd;
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
     border-radius: 6px;
-    background: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    background: #fff;
     cursor: pointer;
-    transition: 0.2s;
+    transition: background 0.15s, border-color 0.15s;
 }
 
-.page-btn:hover,
-.page-number:hover {
-    background: #f0f0f0;
+.page-btn:hover:not(.disabled):not(.page-dots):not(.page-current) {
+    background: #f5f5f5;
+    border-color: #bbb;
 }
 
-.page-number.active {
-    background: #412700;
-    color: #ffcb7d;
-    border-color: #412700;
+.page-btn.page-current {
+    background: var(--color-brand);
+    color: var(--color-brand-text);
+    border-color: var(--color-brand);
+    font-weight: 600;
+    cursor: default;
+}
+
+.page-btn.page-arrow {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+.page-btn.page-dots {
+    border: none;
+    background: transparent;
+    cursor: default;
+    color: #999;
+    pointer-events: none;
+}
+
+.page-btn.disabled {
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
 }
 
 /* ============================================================
    RESPONSIVE
-============================================================ */
+   ============================================================ */
 
 @media (max-width: 768px) {
     .store-page {
@@ -179,8 +337,4 @@
     .filters {
         width: 100%;
     }
-}
-
-.card-actions .action-btn {
-    background: none !important;
 }
