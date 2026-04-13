@@ -11,63 +11,59 @@
 
 <x-header />
 
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main class="cart-page">
 
     <div class="back-button">
-        <button onclick="location.href='{{ route('home') }}'">← Back</button>
-    </div>
-
-    <div class="breadcrumbs">
-        <a href="{{ route('cart') }}">Cart</a>
+        <button onclick="location.href='{{ route('store') }}'">← Continue Shopping</button>
     </div>
 
     <div class="cart-container">
+
         <div class="products-in-cart">
+            @forelse ($items as $item)
+                <div class="product-cart">
+                    <img src="{{ asset('storage/' . $item->product->main_image) }}" alt="{{ $item->product->name }}">
+                    
+                    <div class="product-info">
+                        <h4>{{ $item->product->name }}</h4>
+                        <p>{{ $item->product->short_description }}</p>
+                    </div>
 
-            <div class="product-cart">
-                <img src="{{ asset('images/st5.webp') }}" alt="Charizard">
-                <div class="product-info">
-                    <h4>Charizard</h4>
-                    <p>Charizard model for pokemon enthusiasts.</p>
+                    <div class="product-meta">
+                        <form method="POST" action="{{ route('cart.update', $item) }}" class="quantity-form">
+                            @csrf
+                            @method('PATCH')
+                            <button type="submit" name="quantity" value="{{ $item->quantity - 1 }}">−</button>
+                            <span>{{ $item->quantity }}</span>
+                            <button type="submit" name="quantity" value="{{ $item->quantity + 1 }}">+</button>
+                        </form>
+                        <p>{{$item->product->price }}€</p>
+                        <form method="POST" action="{{ route('cart.remove', $item) }}" class="remove-form">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Remove</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="product-meta">
-                    <p>1 × 24€</p>
-                </div>
-            </div>
-
-            <div class="product-cart">
-                <img src="{{ asset('images/st6.webp') }}" alt="Border Collie">
-                <div class="product-info">
-                    <h4>Border Collie</h4>
-                    <p>Model of border collie breed, if you have one at home.</p>
-                </div>
-                <div class="product-meta">
-                    <p>2 × 59€</p>
-                </div>
-            </div>
-
+            @empty
+                <p>Your cart is empty.</p>
+            @endforelse
         </div>
 
         <div class="summary">
             <h2>Summary</h2>
             <hr>
             <ul class="summary-items">
-                <li>Charizard × 1 → 24€</li>
-                <li>Border Collie × 2 → 118€</li>
+                @foreach ($items as $item)
+                    <li>{{ $item->product->name }} × {{ $item->quantity }} → {{ $item->quantity * $item->product->price }}€</li>
+                @endforeach
             </ul>
             <hr>
-            <p class="total-price">Total price: 142€</p>
+            <p class="total-price">Total: {{ $items->sum(fn($item) => $item->quantity * $item->product->price) }}€</p>
             <button class="checkout-btn" onclick="location.href='{{ route('checkout') }}'">Proceed to Checkout</button>
         </div>
-    </div>
+
+    </div> {{-- koniec cart-container --}}
 
 </main>
 

@@ -8,19 +8,9 @@
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 <body>
-
 <x-header />
 
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main class="cart-page">
-
     <div class="back-button">
         <button onclick="location.href='{{ route('cart') }}'">← Back</button>
     </div>
@@ -31,64 +21,73 @@
         <span class="current">Checkout</span>
     </div>
 
-    <div class="cart-container">
-        <div class="products-in-cart">
-            <div class="form">
-                <h2>Shipping</h2>
-                <div class="shipping-methods">
-                    <label class="shipping-option">
-                        <input type="radio" name="shipping" checked>
-                        <div class="shipping-card">
-                            <h4>AlzaBox</h4>
-                            <p>Pickup point</p>
-                            <span>€2.99</span>
-                        </div>
-                    </label>
-                    <label class="shipping-option">
-                        <input type="radio" name="shipping">
-                        <div class="shipping-card">
-                            <h4>Courier</h4>
-                            <p>Delivery to address</p>
-                            <span>€2.99</span>
-                        </div>
-                    </label>
-                </div>
+    <form method="POST" action="{{ route('checkout.store') }}">
+        @csrf
+        <div class="cart-container">
+            <div class="products-in-cart">
+                <div class="form">
+                    <h2>Shipping</h2>
+                    <div class="shipping-methods">
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="alzabox" checked>
+                            <div class="shipping-card">
+                                <h4>AlzaBox</h4>
+                                <p>Pickup point</p>
+                                <span>€2.99</span>
+                            </div>
+                        </label>
+                        <label class="shipping-option">
+                            <input type="radio" name="shipping" value="courier">
+                            <div class="shipping-card">
+                                <h4>Courier</h4>
+                                <p>Delivery to address</p>
+                                <span>€2.99</span>
+                            </div>
+                        </label>
+                    </div>
 
-                <h2>Information</h2>
-                <div class="form-row">
-                    <input type="text" placeholder="Name">
-                    <input type="text" placeholder="Surname">
-                </div>
-                <div class="form-row">
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="form-row">
-                    <input type="text" placeholder="City">
-                    <input type="text" placeholder="Postal code" class="postal-code">
-                </div>
-                <div class="form-row">
-                    <input type="text" placeholder="Address" class="address">
-                </div>
-                <div class="form-row">
-                    <input type="tel" placeholder="Phone Number">
+                    <h2>Information</h2>
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required>
+                        <input type="text" name="surname" placeholder="Surname" value="{{ old('surname') }}" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" name="email" placeholder="Email" value="{{ old('email', auth()->user()->email) }}" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="city" placeholder="City" value="{{ old('city') }}" required>
+                        <input type="text" name="postal_code" placeholder="Postal code" class="postal-code" value="{{ old('postal_code') }}" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="address" placeholder="Address" value="{{ old('address') }}" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" name="phone" placeholder="Phone Number" value="{{ old('phone') }}" required>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="summary">
-            <h2>Summary</h2>
-            <hr>
-            <ul class="summary-items">
-                <li>Charizard × 1 → 24€</li>
-                <li>Border Collie × 2 → 118€</li>
-                <li>Shipping → 2.99€</li>
-            </ul>
-            <hr>
-            <p class="total-price">Total price: 144.99€</p>
-            <button class="checkout-btn" onclick="location.href='{{ route('payment') }}'">Proceed to payment</button>
+            <div class="summary">
+                <h2>Summary</h2>
+                <hr>
+                <ul class="summary-items">
+                    @foreach ($items as $item)
+                        <li>
+                            <span>{{ $item->product->name }} × {{ $item->quantity }}</span>
+                            <span>{{ $item->quantity * $item->product->price }}€</span>
+                        </li>
+                    @endforeach
+                    <li>
+                        <span>Shipping</span>
+                        <span>€2.99</span>
+                    </li>
+                </ul>
+                <hr>
+                <p class="total-price">Total: {{ $items->sum(fn($i) => $i->quantity * $i->product->price) + 2.99 }}€</p>
+                <button type="submit" class="checkout-btn">Proceed to Payment</button>
+            </div>
         </div>
-    </div>
-
+    </form>
 </main>
 
 <x-footer />

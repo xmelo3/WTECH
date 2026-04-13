@@ -7,7 +7,6 @@
 /public/hot
 
 /storage
-/bootstrap/cache/*.php
 
 .env
 .env.*.local

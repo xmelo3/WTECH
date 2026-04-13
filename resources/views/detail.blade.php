@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fox Puzzle – Detail</title>
+    <title>{{ $product->name }}</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 </head>
@@ -11,87 +11,75 @@
 
 <x-header />
 
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main class="detail-container">
 
     <section class="product-gallery" aria-label="Product images">
         <div class="main-image">
-            <img src="{{ asset('images/detail-main.webp') }}" alt="Fox Puzzle – main view">
-        </div>
-        <div class="thumbnail-row" role="list">
-            <img src="{{ asset('images/detail1.webp') }}" alt="Fox Puzzle view 1" role="listitem">
-            <img src="{{ asset('images/detail2.webp') }}" alt="Fox Puzzle view 2" role="listitem">
-            <img src="{{ asset('images/detail3.webp') }}" alt="Fox Puzzle view 3" role="listitem">
-            <img src="{{ asset('images/detail4.webp') }}" alt="Fox Puzzle view 4" role="listitem">
+            <img src="{{ asset('storage/' . $product->main_image) }}" alt="{{ $product->name }}">
         </div>
     </section>
 
     <aside class="product-sidebar" aria-label="Product details">
         <div class="product-header">
-            <h1>Fox Puzzle</h1>
-            <p class="rating" aria-label="Rated 4 out of 5, 120 reviews">
-                <span aria-hidden="true">★★★★☆</span> (120 reviews)
+            <h1>{{ $product->name }}</h1>
+            <p class="rating" aria-label="Rated {{ $product->rating_avg }} out of 5, {{ $product->rating_count }} reviews">
+                <span aria-hidden="true">
+                    @for ($i = 1; $i <= 5; $i++)
+                        {{ $i <= round($product->rating_avg) ? '★' : '☆' }}
+                    @endfor
+                </span>
+                ({{ $product->rating_count }} reviews)
             </p>
         </div>
 
-        <p class="product-short-desc">
-            Have you ever seen shorter desription of a puzzle than this? Never mind it is getting rather long. Anyways this is 3d fox puzzle
-        </p>
+        <p class="product-short-desc">{{ $product->short_description }}</p>
 
         <hr class="sidebar-divider">
 
         <div class="author-box">
             <img src="{{ asset('images/profile.svg') }}" alt="Author avatar">
-            <span class="author-name">Janko Hraško</span>
+            <span class="author-name">{{ $product->user->name }}</span>
             <button class="follow-btn">Follow</button>
         </div>
 
         <hr class="sidebar-divider">
 
         <ul class="product-params">
-            <li><span class="param-label">Filament</span><span class="param-value">PLA / PETG</span></li>
-            <li><span class="param-label">Pieces</span><span class="param-value">24</span></li>
-            <li><span class="param-label">Print time</span><span class="param-value">~3 h</span></li>
-            <li><span class="param-label">Supports</span><span class="param-value">No</span></li>
-            <li><span class="param-label">Infill</span><span class="param-value">15 %</span></li>
-            <li><span class="param-label">Layer height</span><span class="param-value">0.2 mm</span></li>
-            <li><span class="param-label">File format</span><span class="param-value">STL, 3MF</span></li>
-            <li><span class="param-label">License</span><span class="param-value">Personal use</span></li>
+            <li><span class="param-label">Filament</span><span class="param-value">{{ $product->filament }}</span></li>
+            <li><span class="param-label">Pieces</span><span class="param-value">{{ $product->pieces }}</span></li>
+            <li><span class="param-label">Print time</span><span class="param-value">{{ $product->print_time }}</span></li>
+            <li><span class="param-label">Supports</span><span class="param-value">{{ $product->supports }}</span></li>
+            <li><span class="param-label">Infill</span><span class="param-value">{{ $product->infill }}</span></li>
+            <li><span class="param-label">Layer height</span><span class="param-value">{{ $product->layer_height }}</span></li>
+            <li><span class="param-label">File format</span><span class="param-value">{{ $product->file_format }}</span></li>
+            <li><span class="param-label">License</span><span class="param-value">{{ $product->license }}</span></li>
         </ul>
 
         <hr class="sidebar-divider">
 
         <div class="price-box">
-            <span class="price">$4.99</span>
+            <span class="price">${{ number_format($product->price, 2) }}</span>
         </div>
 
-        <a href="{{ route('cart') }}" class="buy-btn">
-            <img src="{{ asset('images/cart.svg') }}" alt="">
-            Buy Now
-        </a>
+        <form method="POST" action="{{ route('cart.add', $product) }}" style="margin:0; display:contents;">
+            @csrf
+            <button type="submit" class="buy-btn">
+                <img src="{{ asset('images/cart.svg') }}" alt="">
+                Add to Cart
+            </button>
+        </form>
 
-        <div class="icon-actions">
-            <button aria-label="Add to wishlist"><img src="{{ asset('images/heart_empty.svg') }}" alt=""></button>
-            <button aria-label="Share"><img src="{{ asset('images/share.svg') }}" alt=""></button>
-            <button aria-label="Bookmark"><img src="{{ asset('images/bookmark_empty.svg') }}" alt=""></button>
-        </div>
+        @if(session('success'))
+            <p style="color: green; font-size: 1rem; text-align:center;">{{ session('success') }}</p>
+        @endif
     </aside>
 
     <section class="product-description" aria-label="Product description">
         <div class="tabs" role="tablist">
-            <button class="tab active" role="tab" aria-selected="true">Description</button>
-            <button class="tab" role="tab" aria-selected="false">Details</button>
-            <button class="tab" role="tab" aria-selected="false">Reviews</button>
+            <button class="tab active" role="tab">Description</button>
         </div>
         <div class="tab-content" role="tabpanel">
-            <p>Detailed description of the model. Includes formats, textures, polycount and more.</p>
+            <p>{{ $product->description }}</p>
         </div>
     </section>
 

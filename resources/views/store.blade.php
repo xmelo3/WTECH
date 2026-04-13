@@ -11,14 +11,6 @@
 
 <x-header />
 
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main class="store-page">
 
     <aside class="filters">
@@ -38,13 +30,6 @@
             <label><input type="radio" name="price"> $50+</label>
         </div>
 
-        <h3>Advanced</h3>
-        <div class="filter-group">
-            <label><input type="checkbox"> Animated</label>
-            <label><input type="checkbox"> Textured</label>
-            <label><input type="checkbox"> Rigged</label>
-        </div>
-
         <button class="apply-btn">Apply Filters</button>
     </aside>
 
@@ -59,74 +44,37 @@
             </select>
         </div>
 
-        <div class="product-grid" id="productGrid"></div>
+        <div class="product-grid">
+            @foreach ($products as $product)
+                <div class="product-card">
+                    <a href="{{ route('product.show', $product) }}">
+                        <img src="{{ asset('storage/' . $product->main_image) }}" alt="{{ $product->name }}">
+                    </a>
+                    <h4>{{ $product->name }}</h4>
+                    <p>${{ number_format($product->price, 2) }}</p>
+                    <div class="card-actions">
+                        <button class="action-btn" aria-label="Add to cart">
+                            <img src="{{ asset('images/cart.svg') }}" alt="">
+                        </button>
+                        <button class="action-btn" aria-label="Share">
+                            <img src="{{ asset('images/share.svg') }}" alt="">
+                        </button>
+                        <button class="action-btn favorite" aria-label="Add to favourites">
+                            <img src="{{ asset('images/heart_full.svg') }}" alt="">
+                        </button>
+                    </div>
+                </div>
+            @endforeach
+        </div>
 
+        {{-- Pagination --}}
         <div class="pagination">
-            <button class="page-btn">Prev</button>
-            <button class="page-number active">1</button>
-            <button class="page-number">2</button>
-            <button class="page-number">3</button>
-            <button class="page-number">4</button>
-            <button class="page-btn">Next</button>
+            {{ $products->links() }}
         </div>
     </section>
 
 </main>
 
 <x-footer />
-
-<script>
-const products = [
-    { name: "Animals",       price: 12 },
-    { name: "Deer",          price: 18 },
-    { name: "Fighter Jet",   price: 9  },
-    { name: "Army",          price: 22 },
-    { name: "Charizard",     price: 15 },
-    { name: "Border Collie", price: 30 },
-    { name: "Catan Wheat",   price: 8  },
-    { name: "These Nuts",    price: 11 },
-    { name: "Banana",        price: 40 },
-    { name: "Citrus",        price: 19 },
-    { name: "Broccoli Head", price: 13 },
-    { name: "Chihuahua",     price: 21 },
-    { name: "Go Eat Him",    price: 17 },
-    { name: "Dragon",        price: 25 },
-    { name: "Surikata",      price: 6  },
-    { name: "Doge Coin",     price: 14 },
-    { name: "Fancy Dog",     price: 32 },
-    { name: "Linus",         price: 27 },
-    { name: "Guard Dog",     price: 10 },
-    { name: "Skull",         price: 45 }
-];
-
-const detailUrl = "{{ route('detail') }}"; // ✅ use Laravel route here
-
-const grid = document.getElementById("productGrid");
-
-products.forEach((product, i) => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-        <a href="${detailUrl}">
-            <img src="/images/st${i + 1}.webp" alt="${product.name}">
-        </a>
-        <h4>${product.name}</h4>
-        <p>$${product.price}</p>
-        <div class="card-actions">
-            <button class="action-btn" aria-label="Add to cart">
-                <img src="/images/cart.svg" alt="">
-            </button>
-            <button class="action-btn" aria-label="Share">
-                <img src="/images/share.svg" alt="">
-            </button>
-            <button class="action-btn favorite" aria-label="Add to favourites">
-                <img src="/images/heart_full.svg" alt="">
-            </button>
-        </div>
-    `;
-    grid.appendChild(card);
-});
-</script>
-
 </body>
 </html>

@@ -8,21 +8,11 @@
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 <body>
-
 <x-header />
 
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main class="cart-page">
-
     <div class="back-button">
-        <button onclick="history.back()">← Back</button>
+        <button onclick="location.href='{{ route('checkout') }}'">← Back</button>
     </div>
 
     <div class="breadcrumbs">
@@ -33,51 +23,60 @@
         <span class="current">Payment</span>
     </div>
 
-    <div class="cart-container">
-        <div class="products-in-cart">
-            <h3>Payment Method</h3>
-            <div class="payment-methods">
-                <label class="payment-option">
-                    <input type="radio" name="payment" checked>
-                    <img src="{{ asset('images/gpayr.svg') }}" alt="GPay">
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="payment">
-                    <img src="{{ asset('images/Visa.svg') }}" alt="Visa">
-                </label>
-                <label class="payment-option">
-                    <input type="radio" name="payment">
-                    <img src="{{ asset('images/ApplePay.svg') }}" alt="Apple Pay">
-                </label>
+    <form method="POST" action="{{ route('payment.pay') }}">
+        @csrf
+        <div class="cart-container">
+            <div class="products-in-cart">
+                <h3>Payment Method</h3>
+                <div class="payment-methods">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="gpay" checked>
+                        <img src="{{ asset('images/gpayr.svg') }}" alt="GPay">
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="visa">
+                        <img src="{{ asset('images/Visa.svg') }}" alt="Visa">
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="applepay">
+                        <img src="{{ asset('images/ApplePay.svg') }}" alt="Apple Pay">
+                    </label>
+                </div>
+
+                <h3>Card Information</h3>
+                <div class="form">
+                    <div class="form-row">
+                        <input type="text" placeholder="Name on Card">
+                        <input type="text" placeholder="CCV" class="postal-code">
+                    </div>
+                    <div class="form-row">
+                        <input type="text" placeholder="Card Number">
+                        <input type="text" placeholder="Expiry Date" class="postal-code">
+                    </div>
+                </div>
             </div>
 
-            <h3>Card Information</h3>
-            <div class="form">
-                <div class="form-row">
-                    <input type="text" placeholder="Name on Card">
-                    <input type="text" placeholder="CCV" class="postal-code">
-                </div>
-                <div class="form-row">
-                    <input type="text" placeholder="Card Number" class="address">
-                    <input type="text" placeholder="Expiry Date" class="postal-code">
-                </div>
+            <div class="summary">
+                <h2>Summary</h2>
+                <hr>
+                <ul class="summary-items">
+                    @foreach ($order->items as $item)
+                        <li>
+                            <span>{{ $item->product->name }} × {{ $item->quantity }}</span>
+                            <span>{{ $item->quantity * $item->price }}€</span>
+                        </li>
+                    @endforeach
+                    <li>
+                        <span>Shipping</span>
+                        <span>€{{ $order->shipping_price }}</span>
+                    </li>
+                </ul>
+                <hr>
+                <p class="total-price">Total: €{{ $order->total }}</p>
+                <button type="submit" class="checkout-btn">Pay Now</button>
             </div>
         </div>
-
-        <div class="summary">
-            <h2>Summary</h2>
-            <hr>
-            <ul class="summary-items">
-                <li>Charizard × 1 → 24€</li>
-                <li>Border Collie × 2 → 118€</li>
-                <li>Shipping → 2.99€</li>
-            </ul>
-            <hr>
-            <p class="total-price">Total price: 144.99€</p>
-            <button class="checkout-btn" onclick="location.href='{{ route('store') }}'">Pay Now</button>
-        </div>
-    </div>
-
+    </form>
 </main>
 
 <x-footer />
