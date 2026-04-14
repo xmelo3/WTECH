@@ -75,12 +75,28 @@ class CheckoutController extends Controller
     public function pay(Request $request)
     {
         $order = Order::findOrFail(session('pending_order_id'));
-        $order->update(['status' => 'paid']);
 
-        // vymaž košík
+        $order->update([
+            'status' => 'paid',
+            'payment_method' => $request->payment,
+            'paid_at' => now(),
+        ]);
+
+        // 🧹 clear cart
         Cart::where('user_id', auth()->id())->delete();
+
         session()->forget('pending_order_id');
 
-        return redirect()->route('store')->with('success', 'Order placed successfully!');
+        // 🔥 THIS IS THE KEY CHANGE
+        return redirect()->route('payment.confirmation', $order->id);
+    }
+
+    public function confirmation(Order $order)
+    {
+        if ($order->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        return view('payment_confirmation', compact('order'));
     }
 }

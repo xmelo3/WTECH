@@ -10,15 +10,6 @@
 <body>
 
 <x-header />
-
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main>
     <section class="hero">
         <picture>

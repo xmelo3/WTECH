@@ -8,6 +8,9 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StoreController;
 
 
+
+Route::get('/payment/confirmation/{order}', [CheckoutController::class, 'confirmation'])
+->name('payment.confirmation');
 Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');

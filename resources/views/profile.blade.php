@@ -10,17 +10,7 @@
 <body>
 
 <x-header />
-
-@auth
-    <p>LOGGED IN as {{ auth()->user()->email }}</p>
-@endauth
-
-@guest
-    <p>NOT logged in</p>
-@endguest
-
 <main class="profile-page">
-
     <section class="profile-top">
         <div class="avatar-wrap">
             <img src="{{ asset('images/st1.webp') }}" alt="Avatar" class="avatar-img">
