@@ -10,6 +10,7 @@
 <body>
 
 <x-header />
+
 <main>
     <section class="hero">
         <picture>
@@ -28,7 +29,7 @@
                     <div class="overlay">
                         <h4>Charizard</h4>
                         <p>$19</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 5) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
@@ -37,7 +38,7 @@
                     <div class="overlay">
                         <h4>Border Collie</h4>
                         <p>$39</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 6) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
@@ -46,16 +47,16 @@
                     <div class="overlay">
                         <h4>Banana</h4>
                         <p>$24</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 9) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
                 <div class="item">
                     <img src="{{ asset('images/st14.webp') }}" alt="Toothless">
                     <div class="overlay">
-                        <h4>Toothless</h4>
+                        <h4>Dragon</h4>
                         <p>$59</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 14) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
@@ -64,7 +65,7 @@
                     <div class="overlay">
                         <h4>Surikata</h4>
                         <p>$49</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 15) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
@@ -73,7 +74,7 @@
                     <div class="overlay">
                         <h4>Doge</h4>
                         <p>$59</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 16) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
@@ -82,7 +83,7 @@
                     <div class="overlay">
                         <h4>Pinguin</h4>
                         <p>$39</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 18) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 
@@ -91,7 +92,7 @@
                     <div class="overlay">
                         <h4>Dragon Skull</h4>
                         <p>$55</p>
-                        <a href="{{ route('detail') }}" class="overlay-btn">Buy now</a>
+                        <a href="{{ route('product.show', 20) }}" class="overlay-btn">Buy now</a>
                     </div>
                 </div>
 

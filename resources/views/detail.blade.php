@@ -61,8 +61,19 @@
             <span class="price">${{ number_format($product->price, 2) }}</span>
         </div>
 
-        <form method="POST" action="{{ route('cart.add', $product) }}" style="margin:0; display:contents;">
+        <form method="POST" action="{{ route('cart.add', $product) }}" style="margin-top: 1em;">
             @csrf
+
+            <div class="quantity-form" style="justify-content:center; margin-bottom: 1em;">
+                <button type="button" onclick="changeQty(-1)">−</button>
+
+                <span id="qty-display">1</span>
+
+                <button type="button" onclick="changeQty(1)">+</button>
+            </div>
+
+            <input type="hidden" name="quantity" id="quantity" value="1">
+
             <button type="submit" class="buy-btn">
                 <img src="{{ asset('images/cart.svg') }}" alt="">
                 Add to Cart
@@ -86,5 +97,17 @@
 </main>
 
 <x-footer />
+<script>
+    let qty = 1;
+
+    function changeQty(amount) {
+        qty += amount;
+
+        if (qty < 1) qty = 1;
+
+        document.getElementById('qty-display').innerText = qty;
+        document.getElementById('quantity').value = qty;
+    }
+</script>
 </body>
 </html>

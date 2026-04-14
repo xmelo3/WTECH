@@ -8,26 +8,26 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    public function add(Product $product)
+    public function add(Request $request, Product $product)
     {
+        $qty = max(1, (int) $request->quantity);
+
         $cart = Cart::where('user_id', auth()->id())
                     ->where('product_id', $product->id)
                     ->first();
 
         if ($cart) {
-            $cart->increment('quantity');
+            $cart->increment('quantity', $qty);
         } else {
             Cart::create([
                 'user_id'    => auth()->id(),
                 'product_id' => $product->id,
-                'quantity'   => 1,
+                'quantity'   => $qty,
             ]);
         }
 
-        // vráti späť na detail, nie na cart
         return back()->with('success', 'Added to cart!');
     }
-
     public function index()
     {
         $items = Cart::where('user_id', auth()->id())

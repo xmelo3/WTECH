@@ -32,10 +32,6 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('prod
 Route::get('/', fn () => view('index'))->name('home');
 Route::get('/detail', fn () => view('detail'))->name('detail');
 
-Route::get('/dashboard', fn () => view('dashboard'))
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', fn () => view('profile'))->name('profile');
 });
