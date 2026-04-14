@@ -30,15 +30,15 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    max-width: 500px; /* pridaj toto */
+    align-items: center;
 }
 
 .main-image {
-    border-radius: 16px;
-    overflow: hidden;
+    border-radius: 20px;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     aspect-ratio: 1 / 1;
+    max-width: 700px;
 }
 
 .main-image img {
@@ -46,6 +46,7 @@
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s;
+    border-radius: 20px;
 }
 
 .main-image:hover img {
@@ -84,11 +85,17 @@
 }
 .thumbnail-row::-webkit-scrollbar-track { background: transparent; }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .thumbnail-row img {
         flex: 0 0 60px;
         height: 60px;
     }
+
+    .main-image img {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
 }
 
 /* ============================================================

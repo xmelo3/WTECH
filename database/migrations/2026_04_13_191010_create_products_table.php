@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('main_image')->nullable();
             $table->integer('rating_count')->default(0);
             $table->decimal('rating_avg', 3, 1)->default(0);
-            $table->foreignId('user_id')->constrained(); // author
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

@@ -2,21 +2,18 @@
    CSS CUSTOM PROPERTIES
    ============================================================ */
 :root {
-    /* Spacing */
     --space-xs:  5px;
     --space-sm:  1em;
     --space-md:  1.5em;
     --space-lg:  2.5em;
     --space-xl:  4em;
 
-    /* Sizing */
-    --avatar-size:          150px;
-    --logo-height:          50px;
-    --logo-footer-height:   40px;
-    --icon-size:            1.5em;
-    --search-icon-size:     16px;
+    --avatar-size:        150px;
+    --logo-height:        50px;
+    --logo-footer-height: 40px;
+    --icon-size:          1.5em;
+    --search-icon-size:   16px;
 
-    /* Colours */
     --color-bg:         #ffffff;
     --color-surface:    #eeeeee;
     --color-surface-2:  #dddddd;
@@ -26,11 +23,10 @@
     --color-brand:      #412700;
     --color-brand-text: #ffcb7d;
 
-    /* Layout */
-    --grid-gap:      15px;
-    --header-pad-x:  20px;
-    --section-pad:   20px;
-    --max-width:     1600px;
+    --grid-gap:     15px;
+    --header-pad-x: 20px;
+    --section-pad:  20px;
+    --max-width:    1600px;
 }
 
 /* ============================================================
@@ -100,19 +96,21 @@ button:hover,
 }
 
 /* ============================================================
-   HEADER
+   NAVIGATION BUTTONS
    ============================================================ */
-
-.header-frame {
-    display: block;
-    width: 100%;
-    height: 100px;
-    border: none;
+.nav-btn {
+    text-decoration: none;
+    color: var(--color-brand-text);
+    background-color: var(--color-brand);
 }
 
+/* ============================================================
+   HEADER
+   ============================================================ */
 header {
     display: flex;
     align-items: center;
+    gap: var(--space-sm);
     padding: 1em var(--header-pad-x);
     max-width: var(--max-width);
     margin: 0 auto;
@@ -120,7 +118,7 @@ header {
 }
 
 header .logo {
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
 }
@@ -130,16 +128,15 @@ header .logo img {
 }
 
 header .search {
-    flex: 2;
+    flex: 1;
     display: flex;
-    justify-content: center;
     max-width: 600px;
 }
 
 header .search input {
     flex: 1;
     max-width: 400px;
-    min-width: 0; 
+    min-width: 0;
 }
 
 header .search button {
@@ -150,20 +147,20 @@ header .search button {
 }
 
 header .search img {
-    width:  var(--search-icon-size);
+    width: var(--search-icon-size);
     height: var(--search-icon-size);
 }
 
 .header-right {
-    flex: 0 0 auto;  
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     gap: var(--space-md);
 }
 
 .login-register {
     display: flex;
+    align-items: center;
     gap: 10px;
 }
 
@@ -180,43 +177,67 @@ header nav.icons {
 }
 
 header nav.icons img {
-    width:  var(--icon-size);
+    width: var(--icon-size);
     height: var(--icon-size);
 }
 
+/* ============================================================
+   BOTTOM NAV (mobile only)
+   ============================================================ */
+.bottom-nav {
+    display: none;
+}
 
 /* ============================================================
-   MAIN NAVIGATION
+   HAMBURGER MENU
    ============================================================ */
+.hamburger-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
 
-.nav-btn {
-    text-decoration: none;
-    color: var(--color-brand-text);
-    background-color: var(--color-brand);
+.hamburger-overlay.active {
+    display: flex;
+    align-items: flex-end;
+}
+
+.hamburger-menu {
+    width: 100%;
+    background: var(--color-bg);
+    padding: var(--space-lg) var(--space-md);
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.hamburger-menu .nav-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8em;
+    font-size: 1rem;
+}
+
+.hamburger-close {
+    align-self: flex-end;
+    background: var(--color-surface-2);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: var(--space-sm);
 }
 
 /* ============================================================
    FOOTER
    ============================================================ */
-
-.footer-wrap {
-    background-color: var(--color-brand);
-}
-
-.footer-frame {
-    display: block;
-    width: 100%;
-    height: 100px;
-    border: none;
-}
-
-body.iframe-footer {
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    height: auto;
-}
-
 footer {
     background-color: var(--color-brand);
     display: flex;
@@ -227,14 +248,14 @@ footer {
     width: 100%;
 }
 
-.logo-footer img {
-    height: var(--logo-footer-height);
-}
-
 .logo-footer {
     padding-right: var(--space-lg);
     border-right: 1px solid rgba(255, 203, 125, 0.3);
     flex-shrink: 0;
+}
+
+.logo-footer img {
+    height: var(--logo-footer-height);
 }
 
 .footer-col {
@@ -287,9 +308,6 @@ footer {
     min-height: 120px;
 }
 
-/* ============================================================
-   PROFILE BAR
-   ============================================================ */
 .profile-bar {
     display: flex;
     flex-direction: column;
@@ -335,7 +353,9 @@ footer {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.products { flex: 1; }
+.products {
+    flex: 1;
+}
 
 .product-grid {
     display: grid;
@@ -356,19 +376,19 @@ footer {
 }
 
 /* ============================================================
-   FORM
+   FORMS
    ============================================================ */
 form {
-    margin:0; 
-    padding:0; 
-    display:contents;
+    margin: 0;
+    padding: 0;
+    display: contents;
 }
 
 .form {
-    text-align: center;
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: var(--space-sm);
 }
 
@@ -430,138 +450,7 @@ form {
    RESPONSIVE
    ============================================================ */
 
-/* Medium — 2-header */
-@media (max-width: 900px) {
-    .header-frame {
-        height: 135px;
-    }
-
-    header {
-        flex-wrap: wrap;
-        padding: 1em var(--header-pad-x);
-        gap: 8px;
-        min-height: 135px;
-        align-content: center;
-    }
-
-    header .logo {
-        flex: 0 0 auto;
-    }
-
-    header .search {
-        flex: 1;
-        max-width: 100%;
-    }
-
-    .header-right {
-        flex: 0 0 100%;
-        justify-content: flex-end;
-        gap: var(--space-sm);
-        min-width: 0;
-    }
-
-    .login-register {
-        flex: 1;
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        gap: 6px;
-    }
-
-    header nav.icons {
-        gap: var(--space-sm);
-        flex-shrink: 0;
-    }
-
-    header nav.icons img {
-        width: 1.5em;
-        height: 1.5em;
-        flex-shrink: 0;
-    }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    .header-frame {
-        height: 120px;
-    }
-
-    header {
-        padding: 0.8em 1em;
-        gap: 6px;
-        min-height: 120px;
-    }
-
-    header .search input {
-        min-width: 0; 
-    }
-
-    .header-right {
-        flex-wrap: wrap; 
-        gap: 6px;
-    }
-
-    .login-register {
-        flex: 1 1 auto;
-        min-width: 0;   
-        flex-wrap: wrap;
-        gap: 4px;
-    }
-
-    .login-register .nav-btn {
-        font-size: 0.75rem;
-        padding: 4px 8px;
-    }
-
-    header nav.icons {
-        flex: 0 0 auto;  
-        flex-shrink: 0;
-        gap: 0.6em;
-    }
-
-    header nav.icons img {
-        width: 1.3em;
-        height: 1.3em;
-    }
-
-    footer {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: var(--space-md);
-        margin: 0;
-    }
-
-    .logo-footer {
-        padding-right: 0;
-        border-right: none;
-        padding-bottom: var(--space-sm);
-        border-bottom: 1px solid rgba(255, 203, 125, 0.3);
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .footer-frame { height: 240px; }
-}
-
-/* hodinky? */
-@media (max-width: 360px) {
-    .login-register .nav-btn {
-        font-size: 0.68rem;
-        padding: 3px 6px;
-    }
-
-    header nav.icons {
-        gap: 0.4em;
-    }
-
-    header nav.icons img {
-        width: 1.15em;
-        height: 1.15em;
-    }
-}
-
-/* Tablet */
+/* Tablet+ */
 @media (min-width: 768px) {
     .profile {
         flex-direction: row;
@@ -593,5 +482,73 @@ form {
 @media (min-width: 1400px) {
     footer {
         margin: 0 auto;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .header-right {
+        display: none;
+    }
+
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: var(--color-bg);
+        border-top: 1px solid var(--color-border);
+        padding: 8px 0 12px;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .bottom-nav a,
+    .bottom-nav button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        font-size: 0.7rem;
+        color: var(--color-text);
+        text-decoration: none;
+        background: none;
+        border: none;
+        padding: 4px 12px;
+        cursor: pointer;
+    }
+
+    .bottom-nav img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .hamburger-icon {
+        font-size: 1.4rem;
+        line-height: 1;
+    }
+
+    body {
+        padding-bottom: 65px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-md);
+        margin: 0;
+    }
+
+    .logo-footer {
+        padding-right: 0;
+        border-right: none;
+        padding-bottom: var(--space-sm);
+        border-bottom: 1px solid rgba(255, 203, 125, 0.3);
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 }
