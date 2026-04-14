@@ -3,20 +3,28 @@
         <img src="{{ asset('images/logo.svg') }}" alt="Logo">
     </a>
 
-    <div class="search">
-        <input type="text" placeholder="Search..." aria-label="Search">
-        <button aria-label="Submit search">
+    {{-- Search: submits GET to /store with ?q=... ──────────────────────── --}}
+    <form class="search" method="GET" action="{{ route('store') }}" role="search">
+        <input
+            type="search"
+            name="q"
+            value="{{ request()->routeIs('store') ? request('q') : '' }}"
+            placeholder="Search products..."
+            aria-label="Search products"
+            autocomplete="off"
+        >
+        <button type="submit" aria-label="Submit search">
             <img src="{{ asset('images/search.svg') }}" alt="">
         </button>
-    </div>
+    </form>
 
     <div class="header-right">
         <div class="login-register">
             @guest
-                <a href="{{ route('login') }}" class="nav-btn">{{ __('Login') }}</a>
+                <a href="{{ route('login') }}"    class="nav-btn">{{ __('Login') }}</a>
                 <a href="{{ route('register') }}" class="nav-btn">{{ __('Register') }}</a>
             @else
-                <form method="POST" action="{{ route('logout') }}" style="margin:0; display:contents;">
+                <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit" class="nav-btn">{{ __('Log Out') }}</button>
                 </form>
@@ -38,16 +46,16 @@
     </div>
 </header>
 
-{{-- Hamburger menu overlay (mobile) --}}
+{{-- Hamburger overlay (mobile) ─────────────────────────────────────────── --}}
 <div class="hamburger-overlay" id="hamburgerOverlay">
     <div class="hamburger-menu">
         <button class="hamburger-close" onclick="toggleMenu()">✕</button>
         <a href="{{ route('store') }}" class="nav-btn">Store</a>
         @guest
-            <a href="{{ route('login') }}" class="nav-btn">Login</a>
+            <a href="{{ route('login') }}"    class="nav-btn">Login</a>
             <a href="{{ route('register') }}" class="nav-btn">Register</a>
         @else
-            <form method="POST" action="{{ route('logout') }}" style="margin:0; display:contents;">
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <button type="submit" class="nav-btn">Log Out</button>
             </form>
@@ -55,7 +63,7 @@
     </div>
 </div>
 
-{{-- Bottom nav (mobile) --}}
+{{-- Bottom nav (mobile) ────────────────────────────────────────────────── --}}
 <nav class="bottom-nav" aria-label="Mobile navigation">
     <a href="{{ route('home') }}">
         <img src="{{ asset('images/home.svg') }}" alt="Home">
@@ -70,7 +78,6 @@
         <span>Profile</span>
     </a>
     <button class="hamburger-btn" onclick="toggleMenu()" aria-label="Menu">
-        <img src="{{ asset('images/home.svg') }}" alt="" style="opacity:0; position:absolute;">
         <span class="hamburger-icon">☰</span>
         <span>Menu</span>
     </button>
@@ -80,8 +87,7 @@
 function toggleMenu() {
     document.getElementById('hamburgerOverlay').classList.toggle('active');
 }
-// close when clicking outside
-document.getElementById('hamburgerOverlay').addEventListener('click', function(e) {
+document.getElementById('hamburgerOverlay').addEventListener('click', function (e) {
     if (e.target === this) toggleMenu();
 });
 </script>
