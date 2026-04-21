@@ -56,7 +56,7 @@
 </table>
 
 @if($products->hasPages())
-<div style="margin-top:1rem;">{{ $products->withQueryString()->links() }}</div>
+<div style="margin-top:1rem;">{{ $products->withQueryString()->links('pagination.custom') }}</div>
 <p style="margin-top:.4rem;font-size:.8rem;color:#aaa;">
     Showing {{ $products->firstItem() }}–{{ $products->lastItem() }} of {{ $products->total() }}
 </p>

@@ -72,3 +72,61 @@
         .search-bar input { padding: .55rem .9rem; border: 1px solid var(--border); border-radius: 7px; font-size: .9rem; width: 260px; }
         .search-bar input:focus { outline: none; border-color: var(--brand); }
         .delete-form { display: inline; }
+
+/* PAGINATION */
+.custom-pagination {
+    display: flex;
+    align-items: center;
+    gap: .35rem;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    padding: 0 .55rem;
+    border-radius: 6px;
+    font-size: .85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--brand);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: background .15s, color .15s;
+    line-height: 1;
+}
+
+.page-btn:hover {
+    background: var(--brand);
+    color: var(--brand-text);
+    border-color: var(--brand);
+}
+
+.page-btn.page-current {
+    background: var(--brand);
+    color: var(--brand-text);
+    border-color: var(--brand);
+    cursor: default;
+}
+
+.page-btn.page-arrow {
+    font-size: .95rem;
+    font-weight: 700;
+}
+
+.page-btn.page-dots {
+    border: none;
+    background: none;
+    color: #aaa;
+    cursor: default;
+    padding: 0 .2rem;
+}
+
+.page-btn.disabled {
+    opacity: .35;
+    cursor: default;
+    pointer-events: none;
+}
