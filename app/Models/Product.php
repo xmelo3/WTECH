@@ -26,6 +26,7 @@ class Product extends Model
         'rating_count',
         'rating_avg',
         'user_id',
+        'category_id',
     ];
 
     protected static function booted(): void
@@ -69,6 +70,12 @@ class Product extends Model
         $basename = basename($this->main_image);
         return asset('images/' . $basename);
     }
+
+    public function images() {
+        return $this->hasMany(ProductImage::class)->orderBy('sort');
+    }
+
+    public function category() { return $this->belongsTo(Category::class); }
 
     public function user()
     {

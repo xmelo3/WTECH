@@ -9,24 +9,20 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 
-// ── Checkout ─────────────────────────────────────────────────────────────────
+// ── Cart ──── (no auth required) ────
+Route::post('/cart/add/{product}',  [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
+Route::patch('/cart/{cart}',        [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/{cart}',       [CartController::class, 'remove'])->name('cart.remove');
+
+// ── Checkout ──── (no auth required) ────
+Route::get('/checkout',  [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/payment',   [CheckoutController::class, 'payment'])->name('payment');
+Route::post('/payment',  [CheckoutController::class, 'pay'])->name('payment.pay');
+
 Route::get('/payment/confirmation/{order}', [CheckoutController::class, 'confirmation'])
     ->name('payment.confirmation');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/checkout',  [CheckoutController::class, 'index'])->name('checkout');
-    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
-    Route::get('/payment',   [CheckoutController::class, 'payment'])->name('payment');
-    Route::post('/payment',  [CheckoutController::class, 'pay'])->name('payment.pay');
-});
-
-// ── Cart ─────────────────────────────────────────────────────────────────────
-Route::middleware('auth')->group(function () {
-    Route::post('/cart/add/{product}',  [CartController::class, 'add'])->name('cart.add');
-    Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
-    Route::patch('/cart/{cart}',        [CartController::class, 'update'])->name('cart.update');
-    Route::delete('/cart/{cart}',       [CartController::class, 'remove'])->name('cart.remove');
-});
 
 // ── Store & products ──────────────────────────────────────────────────────────
 Route::get('/store',            [StoreController::class, 'index'])->name('store');

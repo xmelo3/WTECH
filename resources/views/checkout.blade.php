@@ -23,6 +23,15 @@
 
     <form method="POST" action="{{ route('checkout.store') }}">
         @csrf
+        @if ($errors->any())
+            <div class="alert-error" style="background:#fee2e2;border:1px solid #fca5a5;border-radius:8px;padding:1rem;margin-bottom:1.2rem;">
+                <ul style="margin:0;padding-left:1.2rem;">
+                    @foreach ($errors->all() as $e)
+                        <li style="color:#b91c1c;font-size:.9rem;">{{ $e }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="cart-container">
             <div class="products-in-cart">
                 <div class="form">
@@ -52,7 +61,7 @@
                         <input type="text" name="surname" placeholder="Surname" value="{{ old('surname') }}" required>
                     </div>
                     <div class="form-row">
-                        <input type="email" name="email" placeholder="Email" value="{{ old('email', auth()->user()->email) }}" required>
+                        <input type="email" name="email" placeholder="Email" value="{{ old('email', auth()->user()->email ?? '') }}" required>
                     </div>
                     <div class="form-row">
                         <input type="text" name="city" placeholder="City" value="{{ old('city') }}" required>

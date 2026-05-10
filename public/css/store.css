@@ -406,3 +406,44 @@
     color: var(--color-brand);
     text-decoration: underline;
 }
+
+/* hide real input */
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    display: none;
+}
+
+.filter-option {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.4rem;
+}
+
+/* default tag */
+.filter-option span.custom-check {
+    display: block;
+    width: 100%;
+    padding: 0.4rem 0.8rem;
+    border: 2px solid #412700;
+    border-radius: 6px;
+    color: #412700;
+    font-size: 1rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s, color 0.15s;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* checked = filled brown + beige text */
+.filter-option input:checked + span.custom-check {
+    background: #412700;
+    color:  var(--color-brand-text);
+}
+
+/* hover */
+.filter-option span.custom-check:hover {
+    background: #412700;
+    color:  #ffc369;
+}

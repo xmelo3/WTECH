@@ -43,9 +43,13 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+        $oldSessionId = $request->session()->getId(); // ← grab BEFORE login
+        session(['_old_session_id' => $oldSessionId]);
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        $request->session()->regenerate();
+
+        return redirect(route('home', absolute: false));
     }
 }

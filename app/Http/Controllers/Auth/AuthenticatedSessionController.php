@@ -26,9 +26,12 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        $oldSessionId = $request->session()->getId(); // ← grab BEFORE regenerate
+        session(['_old_session_id' => $oldSessionId]);
+
         $request->session()->regenerate();
 
-        return redirect('/');
+        return redirect()->intended(route('home', absolute: false));
     }
 
     /**

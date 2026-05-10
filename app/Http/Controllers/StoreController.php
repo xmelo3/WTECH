@@ -50,6 +50,10 @@ class StoreController extends Controller
             $query->where('price', '<=', (float) $request->input('max_price'));
         }
 
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->input('category'));
+        }
+
         // ── Sorting ───────────────────────────────────────────────────────
         match ($request->input('sort')) {
             'price_asc'  => $query->orderBy('price', 'asc'),
@@ -71,11 +75,7 @@ class StoreController extends Controller
             ->orderBy('colour')
             ->pluck('colour');
 
-        return view('store', compact(
-            'products',
-            'priceMin',
-            'priceMax',
-            'availableColours'
-        ));
+        $categories = \App\Models\Category::orderBy('name')->get();
+        return view('store', compact('products','priceMin','priceMax','availableColours','categories'));
     }
 }

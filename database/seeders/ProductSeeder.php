@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\User;
 
 class ProductSeeder extends Seeder
@@ -55,7 +56,7 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($products as $data) {
-            Product::create([
+            $product = Product::create([
                 'name'              => $data['name'],
                 'price'             => $data['price'],
                 'short_description' => 'A great 3D printable model.',
@@ -74,6 +75,9 @@ class ProductSeeder extends Seeder
                 'rating_avg'        => round(rand(30, 50) / 10, 1),
                 'user_id'           => $user->id,
             ]);
+
+            // extra image: same file as main — the CSS mirror effect makes it look like a second angle
+            ProductImage::create(['product_id' => $product->id, 'path' => $data['image'], 'sort' => 1]);
         }
     }
 }

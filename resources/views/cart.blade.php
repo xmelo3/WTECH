@@ -30,12 +30,14 @@
                         </div>
 
                         <div class="product-meta">
-                            <form method="POST" action="{{ route('cart.update', $item) }}" class="quantity-form">
+                            <form method="POST" action="{{ route('cart.update', $item) }}" class="qty-control" id="qty-form-{{ $item->id }}">
                                 @csrf
                                 @method('PATCH')
-                                <button type="submit" name="quantity" value="{{ $item->quantity - 1 }}">−</button>
-                                <span>{{ $item->quantity }}</span>
-                                <button type="submit" name="quantity" value="{{ $item->quantity + 1 }}">+</button>
+                                <button type="button" onclick="cartQty({{ $item->id }}, -1)">−</button>
+                                <input type="number" name="quantity" value="{{ $item->quantity }}" min="1" max="999"
+                                    id="qty-{{ $item->id }}"
+                                    onchange="document.getElementById('qty-form-{{ $item->id }}').submit()">
+                                <button type="button" onclick="cartQty({{ $item->id }}, 1)">+</button>
                             </form>
                             <p>{{$item->product->price }}€</p>
                             <form method="POST" action="{{ route('cart.remove', $item) }}" class="remove-form">
@@ -68,5 +70,9 @@
     </main>
 
     <x-footer />
+
+<script src="{{ asset('js/cart.js') }}"></script>
+
+
     </body>
     </html>

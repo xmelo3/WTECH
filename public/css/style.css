@@ -445,6 +445,47 @@ form {
 
 .login .register-btn:hover { background-color: antiquewhite; }
 
+
+
+.qty-control {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.qty-control button {
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid #412700;
+    border-radius: 6px;
+    background: transparent;
+    color: #412700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.qty-control button:hover {
+    background: #412700;
+    color: #f5ebe0;
+}
+
+.qty-control input[type="number"] {
+    width: 3.5rem;
+    text-align: center;
+    border: 2px solid #412700;
+    border-radius: 6px;
+    padding: 0.25rem;
+    font-size: 0.95rem;
+    -moz-appearance: textfield; /* hide arrows Firefox */
+}
+
+/* hide arrows Chrome/Safari */
+.qty-control input[type="number"]::-webkit-inner-spin-button,
+.qty-control input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
 /* ============================================================
    RESPONSIVE
    ============================================================ */
