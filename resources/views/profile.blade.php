@@ -37,7 +37,7 @@
 
     <section class="profile-posts">
         @foreach(range(2, 13) as $i)
-            <a href="{{ route('detail') }}" class="post-item">
+            <a href="{{ route('product.show', $i) }}" class="post-item">
                 <img src="{{ asset('images/st' . $i . '.webp') }}" alt="Post">
             </a>
         @endforeach
